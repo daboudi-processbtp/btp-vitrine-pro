@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { WhyProcessBTP } from "@/components/sections/WhyProcessBTP";
 import { CtaLink } from "@/components/brand/CtaButton";
 import { founderJsonLd } from "@/lib/seo";
 
@@ -40,8 +39,6 @@ function AProposPage() {
           </p>
         </div>
       </section>
-
-      <WhyProcessBTP />
 
       <section className="bg-accent/35 py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
