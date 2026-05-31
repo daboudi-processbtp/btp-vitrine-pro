@@ -939,6 +939,7 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
   },
 };
 
+
 export function findTrainingDetail(slug: string): TrainingDetailContent | undefined {
   return trainingDetails[slug];
 }
