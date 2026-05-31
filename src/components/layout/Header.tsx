@@ -4,8 +4,8 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { CtaLink } from "@/components/brand/CtaButton";
 
-const NAV = [
-  { to: "/", label: "Accueil" },
+const NAV: { to: string; label: string; exact?: boolean }[] = [
+  { to: "/", label: "Accueil", exact: true },
   { to: "/formations", label: "Formations" },
   { to: "/a-propos", label: "À propos" },
   { to: "/contact", label: "Contact" },
@@ -28,7 +28,7 @@ export function Header() {
                   to={item.to}
                   className="text-foreground/80 transition-colors hover:text-primary"
                   activeProps={{ className: "text-primary font-semibold" }}
-                  activeOptions={{ exact: true }}
+                  activeOptions={{ exact: item.exact ?? false }}
                 >
                   {item.label}
                 </Link>
