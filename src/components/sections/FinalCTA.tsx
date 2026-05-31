@@ -3,8 +3,8 @@ import { ContactForm } from "@/components/ui/ContactForm";
 import { CalBookingEmbed } from "@/components/ui/CalBookingEmbed";
 
 // TODO : remplacer par vos vraies coordonnées
-const CONTACT_EMAIL = "contact@processbtp.fr";
-const CONTACT_PHONE = "+33 (0)6 00 00 00 00";
+const CONTACT_EMAIL = "d.aboudi@processbtp.com";
+const CONTACT_PHONE = "+33 6 59 13 72 52";
 
 export function FinalCTA() {
   return (
