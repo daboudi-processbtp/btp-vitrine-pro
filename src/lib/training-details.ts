@@ -592,6 +592,351 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
     outcome:
       "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
   },
+  "gestion-financiere": {
+    duration: "4 jours (28 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Chef de chantier → conducteur de travaux junior",
+    targetProfiles: [
+      "Chefs de chantier en évolution vers la conduite de travaux",
+      "Conducteurs de travaux juniors",
+      "Assistants conducteurs de travaux",
+      "Encadrants en charge du suivi financier d'opération",
+    ],
+    prerequisites:
+      "Expérience de l'encadrement de chantier. Bases en lecture de budget et de marché.",
+    objectives: [
+      "Établir le point 0 financier",
+      "Réaliser le suivi avec analyse des écarts",
+      "Établir une situation de travaux et chiffrer des TS",
+      "Conduire la clôture financière (DGD)",
+    ],
+    program: [
+      {
+        title: "Module 1 — Le point 0 financier",
+        items: [
+          "Reprise du budget initial et structuration",
+          "Identification des recettes et dépenses prévisionnelles",
+          "Construction d'un point 0 fiable",
+        ],
+      },
+      {
+        title: "Module 2 — Suivi et analyse des écarts",
+        items: [
+          "Tableaux de bord coûts / recettes",
+          "Détection et explication des écarts",
+          "Plans d'action correctifs",
+        ],
+      },
+      {
+        title: "Module 3 — Situations de travaux et travaux supplémentaires",
+        items: [
+          "Établissement des situations mensuelles",
+          "Chiffrage et présentation des TS",
+          "Négociation et validation client",
+        ],
+      },
+      {
+        title: "Module 4 — Clôture financière et DGD",
+        items: [
+          "Préparation du décompte général définitif",
+          "Levée des réserves et solde financier",
+          "Retour d'expérience et bilan d'opération",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
+  "droit-de-la-construction": {
+    duration: "1 jour (7 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Chef de chantier → conducteur de travaux junior",
+    targetProfiles: [
+      "Chefs de chantier en évolution vers la conduite de travaux",
+      "Conducteurs de travaux juniors",
+      "Assistants conducteurs de travaux",
+      "Encadrants confrontés à des problématiques contractuelles",
+    ],
+    prerequisites:
+      "Expérience de l'encadrement de chantier. Avoir déjà été exposé à un marché de travaux.",
+    objectives: [
+      "Analyser le cadre juridique d'un projet",
+      "Mobiliser les garanties légales (parfait achèvement, biennale, décennale)",
+      "Gérer un litige client dans un cadre sécurisé",
+    ],
+    program: [
+      {
+        title: "Module 1 — Cadre juridique du projet",
+        items: [
+          "Acteurs et responsabilités (MOA, MOE, entreprises)",
+          "Pièces contractuelles du marché",
+          "Obligations et risques juridiques courants",
+        ],
+      },
+      {
+        title: "Module 2 — Garanties légales",
+        items: [
+          "Garantie de parfait achèvement",
+          "Garantie biennale (bon fonctionnement)",
+          "Garantie décennale et assurances associées",
+        ],
+      },
+      {
+        title: "Module 3 — Gestion d'un litige client",
+        items: [
+          "Détection précoce et traçabilité",
+          "Réponses écrites et posture",
+          "Recours amiables et contentieux",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
+  "paq": {
+    duration: "1 jour (7 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Chef de chantier → conducteur de travaux junior",
+    targetProfiles: [
+      "Chefs de chantier en évolution vers la conduite de travaux",
+      "Conducteurs de travaux juniors",
+      "Responsables qualité chantier",
+      "Assistants conducteurs de travaux",
+    ],
+    prerequisites:
+      "Expérience de l'encadrement de chantier. Connaissance des principaux ouvrages du gros œuvre.",
+    objectives: [
+      "Élaborer un plan d'assurance qualité de chantier",
+      "Organiser la gestion des finitions",
+      "Anticiper et prévenir les malfaçons",
+    ],
+    program: [
+      {
+        title: "Module 1 — Élaboration du PAQ",
+        items: [
+          "Structure et contenu d'un PAQ chantier",
+          "Points d'arrêt et points de contrôle",
+          "Diffusion et appropriation par les équipes",
+        ],
+      },
+      {
+        title: "Module 2 — Gestion des finitions",
+        items: [
+          "Organisation des reprises et finitions",
+          "Coordination avec les corps d'état",
+          "Critères d'acceptation et levée de réserves",
+        ],
+      },
+      {
+        title: "Module 3 — Prévention des malfaçons",
+        items: [
+          "Typologie des malfaçons courantes",
+          "Mesures préventives à intégrer au PAQ",
+          "Retour d'expérience et amélioration continue",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
+  "planification": {
+    duration: "1 jour (7 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Chef de chantier → conducteur de travaux junior",
+    targetProfiles: [
+      "Chefs de chantier en évolution vers la conduite de travaux",
+      "Conducteurs de travaux juniors",
+      "Assistants conducteurs de travaux",
+      "Encadrants en charge de la préparation d'opération",
+    ],
+    prerequisites:
+      "Expérience de l'encadrement de chantier. Bases en lecture de planning.",
+    objectives: [
+      "Élaborer un planning de chantier",
+      "Conduire les démarches administratives",
+      "Organiser plans et commandes",
+      "Gérer les pénalités de retard",
+    ],
+    program: [
+      {
+        title: "Module 1 — Élaboration du planning",
+        items: [
+          "Découpage des tâches et durées",
+          "Enchaînements et chemins critiques",
+          "Mise à jour et suivi du planning",
+        ],
+      },
+      {
+        title: "Module 2 — Démarches administratives",
+        items: [
+          "Déclarations et autorisations préalables",
+          "Coordination avec les concessionnaires",
+          "Gestion documentaire d'opération",
+        ],
+      },
+      {
+        title: "Module 3 — Plans et commandes",
+        items: [
+          "Pilotage de la diffusion des plans",
+          "Programmation des commandes matériaux et matériels",
+          "Coordination avec les sous-traitants",
+        ],
+      },
+      {
+        title: "Module 4 — Pénalités de retard",
+        items: [
+          "Lecture des clauses contractuelles",
+          "Anticipation et justification des aléas",
+          "Négociation et limitation des pénalités",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
+  "gestion-sous-traitants": {
+    duration: "1 jour (7 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Chef de chantier → conducteur de travaux junior",
+    targetProfiles: [
+      "Chefs de chantier en évolution vers la conduite de travaux",
+      "Conducteurs de travaux juniors",
+      "Assistants conducteurs de travaux",
+      "Encadrants pilotant des marchés de sous-traitance",
+    ],
+    prerequisites:
+      "Expérience de l'encadrement de chantier. Avoir déjà travaillé avec des sous-traitants.",
+    objectives: [
+      "Conduire la consultation de sous-traitants",
+      "Établir et sécuriser un contrat de sous-traitance",
+      "Assurer le suivi financier et de production",
+    ],
+    program: [
+      {
+        title: "Module 1 — Consultation des sous-traitants",
+        items: [
+          "Rédaction du DCE de sous-traitance",
+          "Analyse comparée des offres",
+          "Négociation et choix du sous-traitant",
+        ],
+      },
+      {
+        title: "Module 2 — Contractualisation et sécurisation",
+        items: [
+          "Clauses essentielles du contrat de sous-traitance",
+          "Agrément et délégation de paiement",
+          "Assurances et garanties exigibles",
+        ],
+      },
+      {
+        title: "Module 3 — Suivi financier et de production",
+        items: [
+          "Validation des situations sous-traitants",
+          "Suivi de l'avancement et de la qualité",
+          "Gestion des litiges et levée des réserves",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
+  "preparation-audit-iso-9001": {
+    duration: "1 jour (7 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Encadrants, responsables qualité",
+    targetProfiles: [
+      "Responsables qualité d'entreprise BTP",
+      "Conducteurs de travaux et chefs de chantier impliqués dans la démarche qualité",
+      "Encadrants intermédiaires sollicités en audit",
+      "Référents qualité d'agence",
+    ],
+    prerequisites:
+      "Connaissance générale du fonctionnement d'une entreprise BTP. Une première exposition à un audit qualité est un plus.",
+    objectives: [
+      "Identifier les exigences ISO 9001 mobilisées en audit",
+      "Préparer les preuves attendues",
+      "Adopter les bonnes pratiques",
+      "Repérer et corriger les écarts en amont",
+    ],
+    program: [
+      {
+        title: "Module 1 — Exigences ISO 9001 mobilisées en audit",
+        items: [
+          "Logique et structure de la norme",
+          "Chapitres clés sollicités en audit",
+          "Application au contexte BTP",
+        ],
+      },
+      {
+        title: "Module 2 — Préparation des preuves",
+        items: [
+          "Documents et enregistrements attendus",
+          "Organisation de la preuve par processus",
+          "Mise en récit des actions menées",
+        ],
+      },
+      {
+        title: "Module 3 — Bonnes pratiques en audit",
+        items: [
+          "Posture et communication avec l'auditeur",
+          "Réponses claires et factuelles",
+          "Gestion du temps et des sollicitations",
+        ],
+      },
+      {
+        title: "Module 4 — Détection et correction des écarts",
+        items: [
+          "Auto-évaluation préalable",
+          "Plans d'action correctifs",
+          "Suivi et clôture des écarts",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
 };
 
 export function findTrainingDetail(slug: string): TrainingDetailContent | undefined {
