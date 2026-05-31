@@ -5,6 +5,7 @@ import { AudienceSplit } from "@/components/sections/AudienceSplit";
 import { ExpertiseHighlight } from "@/components/sections/ExpertiseHighlight";
 import { TrainingFamilies } from "@/components/sections/TrainingFamilies";
 import { FeaturedTrainings } from "@/components/sections/FeaturedTrainings";
+import { CustomBand } from "@/components/sections/CustomBand";
 import { SocialProof } from "@/components/sections/SocialProof";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -40,8 +41,9 @@ function Home() {
       <ExpertiseHighlight />
       <TrainingFamilies />
       <FeaturedTrainings />
-      <SocialProof />
       <ProcessSteps />
+      <CustomBand />
+      <SocialProof />
       <FinalCTA />
     </main>
   );
