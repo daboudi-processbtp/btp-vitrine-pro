@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
-import { CtaLink } from "@/components/brand/CtaButton";
 
 const NAV: { to: string; label: string; exact?: boolean }[] = [
   { to: "/", label: "Accueil", exact: true },
@@ -37,21 +36,24 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden md:block">
-          <CtaLink href="/contact" variant="amber">
-            Demander un devis
-          </CtaLink>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/contact"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-cta px-3 text-sm font-semibold text-cta-foreground shadow-sm transition-colors hover:bg-cta/90 md:h-11 md:px-5"
+          >
+            <span className="md:hidden">Devis</span>
+            <span className="hidden md:inline">Demander un devis</span>
+          </Link>
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground md:hidden"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground md:hidden"
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
       </div>
 
       {open && (
@@ -65,11 +67,6 @@ export function Header() {
                   </Link>
                 </li>
               ))}
-              <li className="pt-2">
-                <CtaLink href="/contact" variant="amber" className="w-full">
-                  Demander un devis
-                </CtaLink>
-              </li>
             </ul>
           </nav>
         </div>
