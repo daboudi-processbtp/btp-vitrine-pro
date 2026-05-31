@@ -5,7 +5,7 @@ import { CalBookingEmbed } from "@/components/ui/CalBookingEmbed";
 
 const TITLE = "Contact — Demander un devis | PROCESSBTP";
 const DESCRIPTION =
-  "Demandez un devis personnalisé pour vos formations BTP. Réponse sous 24 h ouvrées, ou réservez un appel découverte de 20 minutes.";
+  "Demandez un devis personnalisé pour vos formations BTP. Réponse sous 48 h ouvrées, ou réservez un appel découverte de 20 minutes.";
 
 // TODO : remplacer par vos vraies coordonnées
 const CONTACT_EMAIL = "d.aboudi@processbtp.com";
@@ -47,7 +47,7 @@ function ContactPage() {
               Construisons votre plan de formation BTP.
             </h1>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-white/85">
-              Demandez un devis personnalisé — réponse sous 24 h ouvrées. Ou réservez un appel
+              Demandez un devis personnalisé — réponse sous 48 h ouvrées. Ou réservez un appel
               découverte de 20 minutes pour cadrer votre besoin.
             </p>
 
