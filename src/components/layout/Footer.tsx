@@ -25,18 +25,16 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-white/85">
               <li><Link to="/" className="hover:text-white hover:underline">Accueil</Link></li>
               <li><Link to="/formations" className="hover:text-white hover:underline">Formations</Link></li>
-              <li><a href="#a-propos" className="hover:text-white hover:underline">À propos</a></li>
-              <li><a href="#contact" className="hover:text-white hover:underline">Contact</a></li>
+              <li><Link to="/a-propos" className="hover:text-white hover:underline">À propos</Link></li>
+              <li><Link to="/contact" className="hover:text-white hover:underline">Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-wider text-white">Mentions légales</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-white">Informations</h2>
             <ul className="mt-4 space-y-2 text-sm text-white/85">
-              <li><a href="#mentions" className="hover:text-white hover:underline">Mentions légales</a></li>
-              <li><a href="#cgv" className="hover:text-white hover:underline">CGV</a></li>
-              <li><a href="#confidentialite" className="hover:text-white hover:underline">Politique de confidentialité</a></li>
-              <li><a href="#accessibilite" className="hover:text-white hover:underline">Accessibilité &amp; handicap</a></li>
+              <li><Link to="/mentions-legales" className="hover:text-white hover:underline">Mentions légales</Link></li>
+              <li><Link to="/contact" className="hover:text-white hover:underline">Demander un devis</Link></li>
             </ul>
           </div>
         </div>

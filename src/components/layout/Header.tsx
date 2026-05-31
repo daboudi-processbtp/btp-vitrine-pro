@@ -4,9 +4,11 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { CtaLink } from "@/components/brand/CtaButton";
 
-const NAV = [
-  { to: "/", label: "Accueil" },
+const NAV: { to: string; label: string; exact?: boolean }[] = [
+  { to: "/", label: "Accueil", exact: true },
   { to: "/formations", label: "Formations" },
+  { to: "/a-propos", label: "À propos" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -25,28 +27,18 @@ export function Header() {
                 <Link
                   to={item.to}
                   className="text-foreground/80 transition-colors hover:text-primary"
-                  activeProps={{ className: "text-primary" }}
-                  activeOptions={{ exact: true }}
+                  activeProps={{ className: "text-primary font-semibold" }}
+                  activeOptions={{ exact: item.exact ?? false }}
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <a href="#a-propos" className="text-foreground/80 transition-colors hover:text-primary">
-                À propos
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="text-foreground/80 transition-colors hover:text-primary">
-                Contact
-              </a>
-            </li>
           </ul>
         </nav>
 
         <div className="hidden md:block">
-          <CtaLink href="#contact" variant="amber">
+          <CtaLink href="/contact" variant="amber">
             Demander un devis
           </CtaLink>
         </div>
@@ -73,10 +65,8 @@ export function Header() {
                   </Link>
                 </li>
               ))}
-              <li><a href="#a-propos" onClick={() => setOpen(false)} className="block py-1">À propos</a></li>
-              <li><a href="#contact" onClick={() => setOpen(false)} className="block py-1">Contact</a></li>
               <li className="pt-2">
-                <CtaLink href="#contact" variant="amber" className="w-full">
+                <CtaLink href="/contact" variant="amber" className="w-full">
                   Demander un devis
                 </CtaLink>
               </li>

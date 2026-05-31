@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { CtaLink } from "@/components/brand/CtaButton";
 import { ShieldCheck } from "lucide-react";
 
 export function Hero() {
@@ -29,9 +28,12 @@ export function Hero() {
             virtuelle. Organisme certifié Qualiopi.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <CtaLink href="#contact" variant="amber" size="lg">
+            <Link
+              to="/contact"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-cta px-6 text-base font-semibold text-cta-foreground shadow-sm transition-colors hover:bg-cta/90"
+            >
               Demander un devis
-            </CtaLink>
+            </Link>
             <Link
               to="/formations"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-md border-2 border-white/80 px-6 text-base font-semibold text-white transition-colors hover:bg-white hover:text-primary"
