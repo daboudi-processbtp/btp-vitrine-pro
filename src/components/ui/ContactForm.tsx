@@ -1,4 +1,5 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { CtaButton } from "@/components/brand/CtaButton";
 import { getAllTrainingTitles } from "@/lib/trainings";
 
@@ -9,6 +10,20 @@ type Status = "idle" | "sending" | "ok" | "error";
 
 const CUSTOM_OPTION = "Formation sur mesure";
 const UNSURE_OPTION = "Je ne sais pas encore — conseillez-moi";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SIRET_RE = /^[0-9\s]{14,17}$/;
+
+type FieldName =
+  | "name"
+  | "company"
+  | "siret"
+  | "email"
+  | "phone"
+  | "participants"
+  | "message";
+type Errors = Partial<Record<FieldName, string>>;
+type Touched = Partial<Record<FieldName, boolean>>;
 
 export function ContactForm({
   variant = "light",
@@ -21,8 +36,6 @@ export function ContactForm({
   const [profile, setProfile] = useState<"entreprise" | "particulier">("entreprise");
   const trainingTitles = getAllTrainingTitles();
 
-  // If the URL passes ?formation= that matches a known title, use it.
-  // Otherwise, if it's a non-empty unknown string, fall back to "sur mesure".
   const matchedFormation = initialFormation
     ? trainingTitles.find((t) => t.toLowerCase() === initialFormation.toLowerCase())
     : undefined;
@@ -34,14 +47,88 @@ export function ContactForm({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialFormation]);
 
+  const [values, setValues] = useState<Record<FieldName, string>>({
+    name: "",
+    company: "",
+    siret: "",
+    email: "",
+    phone: "",
+    participants: "",
+    message: "",
+  });
+  const [touched, setTouched] = useState<Touched>({});
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
+  const isParticulier = profile === "particulier";
+
+  const errors = useMemo<Errors>(() => {
+    const e: Errors = {};
+    if (values.name.trim().length < 2) e.name = "Indiquez votre nom et prénom.";
+    if (!isParticulier && values.company.trim().length < 1)
+      e.company = "Indiquez le nom de votre organisation.";
+    if (!isParticulier && !SIRET_RE.test(values.siret.trim()))
+      e.siret = "Saisissez un SIRET (14 chiffres).";
+    if (!EMAIL_RE.test(values.email.trim())) e.email = "Adresse email invalide.";
+    if (!isParticulier) {
+      const n = Number(values.participants);
+      if (!values.participants || Number.isNaN(n) || n < 1)
+        e.participants = "Indiquez le nombre de participants.";
+    }
+    if (values.message.trim().length < 1) e.message = "Décrivez brièvement votre besoin.";
+    return e;
+  }, [values, isParticulier]);
+
+  function setField(name: FieldName, value: string) {
+    setValues((v) => ({ ...v, [name]: value }));
+  }
+  function markTouched(name: FieldName) {
+    setTouched((t) => ({ ...t, [name]: true }));
+  }
+  function showError(name: FieldName): string | undefined {
+    if (!(touched[name] || submitAttempted)) return undefined;
+    return errors[name];
+  }
+  function isValid(name: FieldName): boolean {
+    return (
+      (touched[name] || submitAttempted) &&
+      !errors[name] &&
+      values[name].trim().length > 0
+    );
+  }
+
   const labelColor = variant === "dark" ? "text-white/90" : "text-foreground";
   const inputBase =
     variant === "dark"
       ? "bg-white/10 border-white/20 text-white placeholder:text-white/50"
       : "bg-card border-border text-foreground placeholder:text-muted-foreground";
 
+  function fieldClasses(name: FieldName, extra = "") {
+    const err = showError(name);
+    const ok = isValid(name);
+    const stateBorder = err
+      ? "border-destructive focus-visible:ring-destructive"
+      : ok
+        ? variant === "dark"
+          ? "border-emerald-300/70"
+          : "border-secondary/70"
+        : "";
+    return `w-full rounded-md border px-3 py-2.5 text-sm transition-colors ${inputBase} ${stateBorder} ${extra}`.trim();
+  }
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitAttempted(true);
+    if (Object.keys(errors).length > 0) {
+      setTouched({
+        name: true,
+        email: true,
+        message: true,
+        company: !isParticulier,
+        siret: !isParticulier,
+        participants: !isParticulier,
+      });
+      return;
+    }
     setStatus("sending");
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -57,16 +144,56 @@ export function ContactForm({
         form.reset();
         setFormation("");
         setProfile("entreprise");
+        setValues({
+          name: "",
+          company: "",
+          siret: "",
+          email: "",
+          phone: "",
+          participants: "",
+          message: "",
+        });
+        setTouched({});
+        setSubmitAttempted(false);
       } else setStatus("error");
     } catch {
       setStatus("error");
     }
   }
 
-  const isParticulier = profile === "particulier";
+  if (status === "ok") {
+    const successSurface =
+      variant === "dark"
+        ? "border-white/20 bg-white/5 text-white"
+        : "border-secondary/30 bg-secondary/5 text-foreground";
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className={`motion-safe:animate-[fade-slide-up_400ms_ease-out_both] rounded-lg border ${successSurface} p-6 sm:p-8`}
+      >
+        <div className="flex items-start gap-4">
+          <CheckCircle2
+            className={`h-8 w-8 shrink-0 ${variant === "dark" ? "text-emerald-300" : "text-secondary"}`}
+            aria-hidden="true"
+          />
+          <div className="space-y-2">
+            <p className="text-lg font-semibold">Merci, votre demande est bien reçue.</p>
+            <p
+              className={`text-sm leading-relaxed ${variant === "dark" ? "text-white/80" : "text-muted-foreground"}`}
+            >
+              Je vous réponds personnellement sous 48&nbsp;h ouvrées avec une première
+              proposition de format, de calendrier et de financement.
+            </p>
+            <p className="text-sm font-medium">— Djemma Aboudi</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-4" noValidate>
       <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
       <input type="hidden" name="subject" value="Nouvelle demande de devis — PROCESSBTP" />
       <input type="hidden" name="from_name" value="Site PROCESSBTP" />
@@ -111,11 +238,19 @@ export function ContactForm({
           <input
             id="cf-name"
             name="name"
-            required
-            minLength={2}
-            className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase}`}
             autoComplete="name"
+            value={values.name}
+            onChange={(e) => setField("name", e.target.value)}
+            onBlur={() => markTouched("name")}
+            aria-invalid={!!showError("name")}
+            aria-describedby={showError("name") ? "cf-name-err" : undefined}
+            className={fieldClasses("name")}
           />
+          {showError("name") && (
+            <p id="cf-name-err" className="mt-1 text-xs text-destructive">
+              {showError("name")}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="cf-company" className={`mb-1.5 block text-sm font-medium ${labelColor}`}>
@@ -124,10 +259,19 @@ export function ContactForm({
           <input
             id="cf-company"
             name="company"
-            required={!isParticulier}
-            className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase}`}
             autoComplete="organization"
+            value={values.company}
+            onChange={(e) => setField("company", e.target.value)}
+            onBlur={() => markTouched("company")}
+            aria-invalid={!!showError("company")}
+            aria-describedby={showError("company") ? "cf-company-err" : undefined}
+            className={fieldClasses("company")}
           />
+          {showError("company") && (
+            <p id="cf-company-err" className="mt-1 text-xs text-destructive">
+              {showError("company")}
+            </p>
+          )}
         </div>
       </div>
 
@@ -139,14 +283,22 @@ export function ContactForm({
           <input
             id="cf-siret"
             name="siret"
-            required
             inputMode="numeric"
-            pattern="[0-9\s]{14,17}"
             title="14 chiffres (espaces autorisés)"
             placeholder="14 chiffres"
             maxLength={17}
-            className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase} sm:max-w-xs`}
+            value={values.siret}
+            onChange={(e) => setField("siret", e.target.value)}
+            onBlur={() => markTouched("siret")}
+            aria-invalid={!!showError("siret")}
+            aria-describedby={showError("siret") ? "cf-siret-err" : undefined}
+            className={fieldClasses("siret", "sm:max-w-xs")}
           />
+          {showError("siret") && (
+            <p id="cf-siret-err" className="mt-1 text-xs text-destructive">
+              {showError("siret")}
+            </p>
+          )}
         </div>
       )}
 
@@ -159,10 +311,19 @@ export function ContactForm({
             id="cf-email"
             name="email"
             type="email"
-            required
-            className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase}`}
             autoComplete="email"
+            value={values.email}
+            onChange={(e) => setField("email", e.target.value)}
+            onBlur={() => markTouched("email")}
+            aria-invalid={!!showError("email")}
+            aria-describedby={showError("email") ? "cf-email-err" : undefined}
+            className={fieldClasses("email")}
           />
+          {showError("email") && (
+            <p id="cf-email-err" className="mt-1 text-xs text-destructive">
+              {showError("email")}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="cf-phone" className={`mb-1.5 block text-sm font-medium ${labelColor}`}>
@@ -172,8 +333,10 @@ export function ContactForm({
             id="cf-phone"
             name="phone"
             type="tel"
-            className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase}`}
             autoComplete="tel"
+            value={values.phone}
+            onChange={(e) => setField("phone", e.target.value)}
+            className={`w-full rounded-md border px-3 py-2.5 text-sm transition-colors ${inputBase}`}
           />
         </div>
       </div>
@@ -228,9 +391,18 @@ export function ContactForm({
           name="participants"
           type="number"
           min={1}
-          required={!isParticulier}
-          className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase} sm:max-w-xs`}
+          value={values.participants}
+          onChange={(e) => setField("participants", e.target.value)}
+          onBlur={() => markTouched("participants")}
+          aria-invalid={!!showError("participants")}
+          aria-describedby={showError("participants") ? "cf-participants-err" : undefined}
+          className={fieldClasses("participants", "sm:max-w-xs")}
         />
+        {showError("participants") && (
+          <p id="cf-participants-err" className="mt-1 text-xs text-destructive">
+            {showError("participants")}
+          </p>
+        )}
       </div>
 
       <div>
@@ -240,25 +412,42 @@ export function ContactForm({
         <textarea
           id="cf-msg"
           name="message"
-          required
           rows={4}
-          className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase}`}
           placeholder="Contexte, objectifs, format souhaité, échéance…"
+          value={values.message}
+          onChange={(e) => setField("message", e.target.value)}
+          onBlur={() => markTouched("message")}
+          aria-invalid={!!showError("message")}
+          aria-describedby={showError("message") ? "cf-msg-err" : undefined}
+          className={fieldClasses("message")}
         />
+        {showError("message") && (
+          <p id="cf-msg-err" className="mt-1 text-xs text-destructive">
+            {showError("message")}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
         <CtaButton type="submit" variant="amber" size="lg" disabled={status === "sending"}>
-          {status === "sending" ? "Envoi…" : "Envoyer la demande"}
+          {status === "sending" ? (
+            <>
+              <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden="true" />
+              Envoi en cours…
+            </>
+          ) : (
+            "Envoyer la demande"
+          )}
         </CtaButton>
-        {status === "ok" && (
-          <p className={`text-sm ${variant === "dark" ? "text-white" : "text-secondary"}`}>
-            Merci, votre demande a bien été envoyée. Nous revenons vers vous sous 48 h ouvrées.
+        {status === "error" && (
+          <p role="alert" aria-live="polite" className="text-sm text-destructive">
+            L'envoi a échoué. Merci de réessayer ou de me joindre directement par email
+            ou téléphone (coordonnées ci-dessus).
           </p>
         )}
-        {status === "error" && (
-          <p className="text-sm text-destructive">
-            Une erreur est survenue. Merci de réessayer ou de nous contacter par email.
+        {submitAttempted && Object.keys(errors).length > 0 && status !== "sending" && (
+          <p role="alert" aria-live="polite" className="text-sm text-destructive">
+            Merci de corriger les champs indiqués avant d'envoyer.
           </p>
         )}
       </div>
