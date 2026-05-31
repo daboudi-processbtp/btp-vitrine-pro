@@ -42,13 +42,13 @@ export function FAQ() {
             Questions fréquentes
           </h2>
         </div>
-        <Accordion type="single" collapsible className="mt-10 rounded-lg border border-border bg-card">
+        <Accordion type="multiple" className="mt-10 rounded-lg border border-border bg-card">
           {faqs.map((item, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="px-6 last:border-b-0">
-              <AccordionTrigger className="text-left font-display text-base font-semibold text-foreground hover:no-underline">
+              <AccordionTrigger className="text-left font-display text-base font-semibold text-foreground hover:no-underline [&>svg]:motion-reduce:transition-none">
                 {item.q}
               </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+              <AccordionContent className="text-sm leading-relaxed text-muted-foreground motion-reduce:animate-none">
                 {item.a}
               </AccordionContent>
             </AccordionItem>
