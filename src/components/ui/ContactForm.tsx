@@ -131,6 +131,25 @@ export function ContactForm({
         </div>
       </div>
 
+      {!isParticulier && (
+        <div>
+          <label htmlFor="cf-siret" className={`mb-1.5 block text-sm font-medium ${labelColor}`}>
+            SIRET de l'entreprise
+          </label>
+          <input
+            id="cf-siret"
+            name="siret"
+            required
+            inputMode="numeric"
+            pattern="[0-9\s]{14,17}"
+            title="14 chiffres (espaces autorisés)"
+            placeholder="14 chiffres"
+            maxLength={17}
+            className={`w-full rounded-md border px-3 py-2.5 text-sm ${inputBase} sm:max-w-xs`}
+          />
+        </div>
+      )}
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="cf-email" className={`mb-1.5 block text-sm font-medium ${labelColor}`}>
