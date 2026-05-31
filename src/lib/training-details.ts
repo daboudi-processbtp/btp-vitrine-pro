@@ -937,7 +937,74 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
     outcome:
       "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
   },
+  "methode-chantier": {
+    duration: "2 jours (14 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    audienceShort: "Assistant chef de chantier",
+    targetProfiles: [
+      "Assistants chef de chantier",
+      "Chefs d'équipe évoluant vers une fonction d'encadrement",
+      "Chefs de chantier débutants",
+      "Conducteurs de travaux juniors souhaitant consolider la préparation d'exécution",
+    ],
+    prerequisites:
+      "Expérience de chantier en gros œuvre. Lecture de plan maîtrisée et connaissance des principales phases d'exécution.",
+    objectives: [
+      "Élaborer un planning d'exécution",
+      "Rédiger un mode opératoire",
+      "Construire un plan d'installation de chantier (PIC)",
+      "Anticiper les contraintes d'exécution et de coactivité",
+    ],
+    program: [
+      {
+        title: "Module 1 — Planning d'exécution",
+        items: [
+          "Décomposition des tâches et chaînage des phases",
+          "Estimation des durées et des moyens",
+          "Construction et mise à jour du planning",
+          "Identification du chemin critique",
+        ],
+      },
+      {
+        title: "Module 2 — Mode opératoire",
+        items: [
+          "Structure et niveau de détail attendu",
+          "Description des séquences de travail",
+          "Moyens humains, matériels et matériaux",
+          "Points de vigilance sécurité et qualité",
+        ],
+      },
+      {
+        title: "Module 3 — Plan d'installation de chantier (PIC)",
+        items: [
+          "Implantation des zones de vie, stockage et circulation",
+          "Positionnement des grues et engins de levage",
+          "Réseaux provisoires et accès chantier",
+          "Lecture et formalisation du PIC",
+        ],
+      },
+      {
+        title: "Module 4 — Contraintes d'exécution et coactivité",
+        items: [
+          "Identification des interfaces entre corps d'état",
+          "Gestion des coactivités et phasage des interventions",
+          "Anticipation des contraintes site et riverains",
+          "Mesures de prévention associées",
+        ],
+      },
+    ],
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
 };
+
 
 export function findTrainingDetail(slug: string): TrainingDetailContent | undefined {
   return trainingDetails[slug];
