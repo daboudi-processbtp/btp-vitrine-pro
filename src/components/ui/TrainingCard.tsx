@@ -28,8 +28,8 @@ export function TrainingCard({ training }: { training: Training }) {
         <p className="mt-4 text-xs font-medium text-muted-foreground">Durée : {training.duration}</p>
       )}
       <Link
-        to="/formations"
-        hash={training.slug}
+        to="/formations/$slug"
+        params={{ slug: training.slug }}
         className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-secondary"
       >
         Voir le programme
