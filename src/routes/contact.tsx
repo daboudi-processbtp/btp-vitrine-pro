@@ -12,6 +12,9 @@ const CONTACT_EMAIL = "contact@processbtp.fr";
 const CONTACT_PHONE = "+33 (0)6 00 00 00 00";
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    formation: typeof search.formation === "string" ? search.formation : undefined,
+  }),
   head: () => ({
     meta: [
       { title: TITLE },
@@ -26,6 +29,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const { formation } = Route.useSearch();
   return (
     <main id="main">
       <section className="bg-primary py-20 text-primary-foreground" aria-labelledby="contact-title">
@@ -66,7 +70,7 @@ function ContactPage() {
               Les champs marqués sont nécessaires pour vous répondre rapidement.
             </p>
             <div className="mt-6">
-              <ContactForm variant="dark" />
+              <ContactForm variant="dark" initialFormation={formation} />
             </div>
           </div>
         </div>

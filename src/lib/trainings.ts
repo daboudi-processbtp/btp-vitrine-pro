@@ -104,3 +104,7 @@ export function findTrainingBySlug(slug: string): { training: Training; family: 
   }
   return null;
 }
+
+export function getAllTrainingTitles(): string[] {
+  return catalogue.flatMap((f) => f.trainings.map((t) => t.title));
+}

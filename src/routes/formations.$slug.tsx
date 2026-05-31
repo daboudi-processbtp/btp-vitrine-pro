@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { TrustBadge } from "@/components/brand/Badge";
-import { CtaLink } from "@/components/brand/CtaButton";
 import { findTrainingBySlug } from "@/lib/trainings";
 import { courseJsonLd } from "@/lib/seo";
 
@@ -119,9 +118,13 @@ function TrainingDetailPage() {
               cadrage adapté à vos équipes.
             </p>
             <div className="mt-5">
-              <CtaLink href="/contact" variant="amber" size="lg">
-                Demander un devis
-              </CtaLink>
+              <Link
+                to="/contact"
+                search={{ formation: training.title }}
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-cta px-6 text-base font-semibold text-cta-foreground shadow-sm transition-colors hover:bg-cta/90"
+              >
+                Demander un devis pour cette formation
+              </Link>
             </div>
           </div>
         </div>
