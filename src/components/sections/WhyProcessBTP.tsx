@@ -1,6 +1,6 @@
 import { Hammer, GraduationCap, Wrench, Settings2, Users, BadgeCheck } from "lucide-react";
 
-const items = [
+export const whyItems = [
   { icon: Hammer, title: "23 ans sur les chantiers", desc: "Une expertise terrain qui précède la salle de classe — les cas pratiques viennent du réel." },
   { icon: GraduationCap, title: "Double Master", desc: "Solides fondamentaux techniques et managériaux, ancrés dans la pratique du génie civil." },
   { icon: Wrench, title: "Expertise hands-on", desc: "Les concepts s'incarnent en gestes, en plans, en situations rencontrées sur opération." },
@@ -25,7 +25,7 @@ export function WhyProcessBTP() {
           </p>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map(({ icon: Icon, title, desc }) => (
+          {whyItems.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="rounded-lg border border-border bg-card p-6">
               <span className="flex h-11 w-11 items-center justify-center rounded-md bg-secondary/10 text-secondary">
                 <Icon className="h-5 w-5" aria-hidden="true" />
