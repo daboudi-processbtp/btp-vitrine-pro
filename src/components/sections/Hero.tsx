@@ -41,6 +41,9 @@ export function Hero() {
               Voir les formations
             </Link>
           </div>
+          <p className="mt-4 text-sm text-white/65">
+            Réponse sous 48 h ouvrées · Devis personnalisé · Aucun paiement en ligne
+          </p>
         </div>
 
         <div className="lg:col-span-5">
