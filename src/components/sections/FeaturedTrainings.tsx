@@ -20,13 +20,13 @@ const featured: Training[] = [
       "Préparation au titre professionnel : pilotage technique, financier et contractuel d'opérations BTP.",
   },
   {
-    slug: "lecture-de-plan",
+    slug: "lecture-de-plan-initiation",
     family: "Exécution & terrain",
-    title: "Lecture de plan",
-    duration: "2 à 3 jours",
+    title: "Lecture de plan : initiation",
+    duration: "2 jours (14 h)",
     cpf: false,
     summary:
-      "Décoder plans d'architecte et plans d'exécution, repérer les côtes critiques et anticiper les incohérences.",
+      "Identifier les symboles d'un plan de coffrage et de ferraillage, situer un ouvrage dans l'espace, relever cotes et niveaux.",
   },
 ];
 
