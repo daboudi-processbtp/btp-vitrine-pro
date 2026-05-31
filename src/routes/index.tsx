@@ -41,8 +41,8 @@ function Home() {
       <ExpertiseHighlight />
       <TrainingFamilies />
       <FeaturedTrainings />
-      <ProcessSteps />
       <CustomBand />
+      <ProcessSteps />
       <SocialProof />
       <FinalCTA />
     </main>
