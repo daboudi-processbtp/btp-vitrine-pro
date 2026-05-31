@@ -253,7 +253,7 @@ export function ContactForm({
         </CtaButton>
         {status === "ok" && (
           <p className={`text-sm ${variant === "dark" ? "text-white" : "text-secondary"}`}>
-            Merci, votre demande a bien été envoyée. Nous revenons vers vous sous 24 h ouvrées.
+            Merci, votre demande a bien été envoyée. Nous revenons vers vous sous 48 h ouvrées.
           </p>
         )}
         {status === "error" && (
