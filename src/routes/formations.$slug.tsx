@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { TrustBadge } from "@/components/brand/Badge";
 import { findTrainingBySlug } from "@/lib/trainings";
-import { findTrainingDetail } from "@/lib/training-details";
+import { findTrainingDetail, type TrainingDetailContent } from "@/lib/training-details";
 import { courseJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/formations/$slug")({
@@ -59,7 +59,9 @@ export const Route = createFileRoute("/formations/$slug")({
 });
 
 function TrainingDetailPage() {
-  const { training, detail } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const { training } = data;
+  const detail = data.detail as TrainingDetailContent | undefined;
 
   const ctaClasses =
     "inline-flex h-12 items-center justify-center gap-2 rounded-md bg-cta px-6 text-base font-semibold text-cta-foreground shadow-sm transition-colors hover:bg-cta/90";
