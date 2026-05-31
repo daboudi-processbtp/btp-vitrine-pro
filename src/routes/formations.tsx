@@ -1,5 +1,6 @@
+import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { TrainingCard } from "@/components/ui/TrainingCard";
+import { TrainingCard, getModalities, type Modality } from "@/components/ui/TrainingCard";
 import { CtaLink } from "@/components/brand/CtaButton";
 import { catalogue } from "@/lib/trainings";
 
@@ -22,6 +23,26 @@ export const Route = createFileRoute("/formations")({
 });
 
 function Catalogue() {
+  const [familyFilter, setFamilyFilter] = useState<string>("all");
+  const [modalityFilter, setModalityFilter] = useState<"all" | Modality>("all");
+  const [cpfOnly, setCpfOnly] = useState(false);
+
+  const filteredCatalogue = useMemo(() => {
+    return catalogue
+      .filter((g) => familyFilter === "all" || g.id === familyFilter)
+      .map((g) => ({
+        ...g,
+        trainings: g.trainings.filter((t) => {
+          if (cpfOnly && !t.cpf) return false;
+          if (modalityFilter !== "all" && !getModalities(t).includes(modalityFilter)) return false;
+          return true;
+        }),
+      }))
+      .filter((g) => g.trainings.length > 0);
+  }, [familyFilter, modalityFilter, cpfOnly]);
+
+  const totalCount = filteredCatalogue.reduce((n, g) => n + g.trainings.length, 0);
+
   return (
     <main id="main">
       <section className="bg-primary py-16 text-primary-foreground">
@@ -37,17 +58,74 @@ function Catalogue() {
         </div>
       </section>
 
-      <nav aria-label="Familles de formations" className="border-b border-border bg-card">
-        <div className="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-2 px-4 py-4 text-sm font-semibold sm:px-6 lg:px-8">
-          {catalogue.map((g) => (
-            <a key={g.id} href={`#${g.id}`} className="text-foreground/80 hover:text-primary">
-              {g.name}
-            </a>
-          ))}
+      <section className="border-b border-border bg-card" aria-label="Filtres">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="grid gap-4 md:grid-cols-3">
+            <div>
+              <label htmlFor="filter-family" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Famille
+              </label>
+              <select
+                id="filter-family"
+                value={familyFilter}
+                onChange={(e) => setFamilyFilter(e.target.value)}
+                className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+              >
+                <option value="all">Toutes les familles</option>
+                {catalogue.map((g) => (
+                  <option key={g.id} value={g.id}>{g.name}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="filter-modality" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Modalité
+              </label>
+              <select
+                id="filter-modality"
+                value={modalityFilter}
+                onChange={(e) => setModalityFilter(e.target.value as "all" | Modality)}
+                className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+              >
+                <option value="all">Toutes modalités</option>
+                <option value="presentiel">Présentiel</option>
+                <option value="distanciel">Distanciel</option>
+              </select>
+            </div>
+            <div className="flex items-end">
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border bg-background px-3 py-2.5 text-sm font-medium text-foreground">
+                <input
+                  type="checkbox"
+                  checked={cpfOnly}
+                  onChange={(e) => setCpfOnly(e.target.checked)}
+                  className="h-4 w-4 accent-primary"
+                />
+                Éligible CPF uniquement
+              </label>
+            </div>
+          </div>
+          <p className="mt-4 text-xs text-muted-foreground" aria-live="polite">
+            {totalCount} formation{totalCount > 1 ? "s" : ""} affichée{totalCount > 1 ? "s" : ""}
+          </p>
         </div>
-      </nav>
+      </section>
 
-      {catalogue.map((group, idx) => (
+      {totalCount === 0 ? (
+        <section className="bg-background py-20">
+          <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="font-display text-2xl font-bold text-foreground">
+              Aucune formation ne correspond à ces filtres.
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Élargissez votre sélection ou contactez-nous pour un parcours sur mesure.
+            </p>
+            <div className="mt-6">
+              <CtaLink href="/contact" variant="amber">Demander un devis</CtaLink>
+            </div>
+          </div>
+        </section>
+      ) : (
+        filteredCatalogue.map((group, idx) => (
         <section
           key={group.id}
           id={group.id}
@@ -63,7 +141,8 @@ function Catalogue() {
             </div>
           </div>
         </section>
-      ))}
+        ))
+      )}
 
       <section className="bg-primary py-16 text-primary-foreground">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
