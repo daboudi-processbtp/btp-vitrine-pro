@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Clock, ShieldCheck, FileCheck2, BadgeEuro } from "lucide-react";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { CalBookingEmbed } from "@/components/ui/CalBookingEmbed";
 
@@ -28,6 +28,13 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const REASSURANCE = [
+  { icon: Clock, text: "Réponse sous 48 h ouvrées" },
+  { icon: ShieldCheck, text: "Organisme certifié Qualiopi" },
+  { icon: FileCheck2, text: "Devis personnalisé, sans engagement" },
+  { icon: BadgeEuro, text: "Aucun paiement en ligne" },
+];
+
 function ContactPage() {
   const { formation } = Route.useSearch();
   return (
@@ -43,6 +50,15 @@ function ContactPage() {
               Demandez un devis personnalisé — réponse sous 24 h ouvrées. Ou réservez un appel
               découverte de 20 minutes pour cadrer votre besoin.
             </p>
+
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {REASSURANCE.map(({ icon: Icon, text }) => (
+                <li key={text} className="flex items-start gap-2.5 text-sm text-white/90">
+                  <Icon className="mt-0.5 h-4 w-4 shrink-0 text-cta" aria-hidden="true" />
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
 
             <div className="mt-8">
               <CalBookingEmbed label="Réservez un appel découverte (20 min)" variant="outline-light" />
@@ -71,6 +87,14 @@ function ContactPage() {
             </p>
             <div className="mt-6">
               <ContactForm variant="dark" initialFormation={formation} />
+            </div>
+            <div className="mt-8 border-t border-white/15 pt-6">
+              <p className="text-sm text-white/85">
+                Vous préférez en parler de vive voix ?
+              </p>
+              <div className="mt-3">
+                <CalBookingEmbed label="Réserver un appel découverte" variant="outline-light" />
+              </div>
             </div>
           </div>
         </div>
