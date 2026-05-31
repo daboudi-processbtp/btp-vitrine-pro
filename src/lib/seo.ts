@@ -5,7 +5,7 @@ export const ORG_LEGAL =
   "Déclaration d'activité enregistrée sous le numéro 32591329759 auprès du préfet de région Hauts-de-France. Cet enregistrement ne vaut pas agrément de l'État.";
 export const ORG_DECLARATION_NUMBER = "32591329759";
 export const ORG_DESCRIPTION =
-  "Organisme de formation certifié Qualiopi, spécialisé dans le bâtiment et le génie civil. Formations certifiantes et éligibles CPF, partout en France.";
+  "Organisme de formation certifié Qualiopi, spécialisé dans le bâtiment et le génie civil. Formations éligibles CPF, partout en France.";
 
 export function organizationJsonLd() {
   return {

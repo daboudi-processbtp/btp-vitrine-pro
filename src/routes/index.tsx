@@ -9,7 +9,7 @@ import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { founderJsonLd } from "@/lib/seo";
 
-const TITLE = "PROCESSBTP — Formations BTP certifiantes, éligibles CPF, Qualiopi";
+const TITLE = "PROCESSBTP — Formations BTP éligibles CPF, Qualiopi";
 const DESCRIPTION =
   "Organisme de formation BTP certifié Qualiopi : exécution, encadrement de chantier, pilotage. Éligible CPF, partout en France, en présentiel ou classe virtuelle.";
 

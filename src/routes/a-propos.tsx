@@ -36,7 +36,7 @@ function AProposPage() {
           <p className="mt-4 max-w-2xl text-lg text-white/85">
             PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain.
             Notre fondateur a porté 23 ans de chantiers — gros œuvre, génie civil, encadrement — avant
-            de structurer son expérience en parcours de formation certifiants.
+            de structurer son expérience en parcours de formation opérationnels.
           </p>
         </div>
       </section>
