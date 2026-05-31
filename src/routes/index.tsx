@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { AudienceSplit } from "@/components/sections/AudienceSplit";
+import { ExpertiseHighlight } from "@/components/sections/ExpertiseHighlight";
 import { TrainingFamilies } from "@/components/sections/TrainingFamilies";
 import { FeaturedTrainings } from "@/components/sections/FeaturedTrainings";
-import { WhyProcessBTP } from "@/components/sections/WhyProcessBTP";
 import { SocialProof } from "@/components/sections/SocialProof";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -35,9 +36,10 @@ function Home() {
     <main id="main">
       <Hero />
       <TrustBar />
+      <AudienceSplit />
+      <ExpertiseHighlight />
       <TrainingFamilies />
       <FeaturedTrainings />
-      <WhyProcessBTP />
       <SocialProof />
       <ProcessSteps />
       <FinalCTA />
