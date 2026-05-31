@@ -16,7 +16,7 @@ export function FinalCTA() {
             Construisons votre plan de formation BTP.
           </h2>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-white/85">
-            Demandez un devis personnalisé — réponse sous 24 h ouvrées. Ou réservez un appel
+            Demandez un devis personnalisé — réponse sous 48 h ouvrées. Ou réservez un appel
             découverte de 20 minutes pour cadrer votre besoin.
           </p>
 
