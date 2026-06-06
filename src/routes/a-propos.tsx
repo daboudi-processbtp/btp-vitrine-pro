@@ -118,10 +118,7 @@ function AProposPage() {
             Du chantier à la transmission
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Depuis 2020, je forme les équipes de grands groupes du BTP. Maître de conférences
-            associé en génie civil à l'IUT de Béthune depuis 2025, intervenant à Polytech Lille, à l'ESCT et pour Le Moniteur. En 2024, j'ai fondé PROCESSBTP
-            pour mettre cette double culture, terrain et académique, au service de la montée en
-            compétence de vos équipes.
+            Depuis 2020, je forme les équipes de grands groupes du BTP. Maître de conférences associé en génie civil à l'IUT de Béthune depuis 2025, intervenant à Polytech Lille, formateur à l'ESCT, pour Le Moniteur et pour La Solive. En 2024, j'ai fondé PROCESSBTP pour mettre cette double culture, terrain et académique, au service de la montée en compétence de vos équipes.
           </p>
         </div>
       </section>
@@ -133,10 +130,7 @@ function AProposPage() {
             Mes diplômes et certifications
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Double Master 2 – Management de projet génie civil (ESCT) et Management et
-            développement des entreprises (MDE), IAE Lille. Titre Professionnel Chef de chantier.
-            Organisme certifié Qualiopi, Référent Handicap (RPSH), Référent OPPBTP. Formations
-            éligibles CPF.
+            Double Master 2 : Management de projet génie civil à l'École Supérieure de Conduite de Travaux, et Management et développement des entreprises à l'Institut d'Administration des Entreprises (IAE) de Lille. Titre Professionnel Chef de chantier. Habilitation membre de jury pour le Titre Professionnel Conducteur de travaux. Organisme certifié Qualiopi, Référent Handicap (RPSH), Référent OPPBTP. Formations éligibles CPF.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             <TrustBadge variant="qualiopi">Qualiopi</TrustBadge>
@@ -153,10 +147,7 @@ function AProposPage() {
             Ma façon de former
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Le geste avant la théorie. Des groupes volontairement limités (6 à 8 stagiaires) pour
-            un suivi réel. Des contenus construits sur mesure, ancrés dans vos chantiers et vos
-            contraintes. Parce qu'une compétence qui ne se transpose pas sur le terrain ne sert
-            à rien.
+            Le geste avant la théorie. Des groupes volontairement limités (6 à 8 stagiaires) pour un suivi réel. Des contenus construits sur mesure, ancrés dans vos chantiers et vos contraintes. Je forme en présentiel, en visio collective (groupe) ou en visio individuelle, selon le format le plus adapté à votre équipe. Parce qu'une compétence qui ne se transpose pas sur le terrain ne sert à rien.
           </p>
         </div>
       </section>
