@@ -147,10 +147,7 @@ function AProposPage() {
             Ma façon de former
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Le geste avant la théorie. Des groupes volontairement limités (6 à 8 stagiaires) pour
-            un suivi réel. Des contenus construits sur mesure, ancrés dans vos chantiers et vos
-            contraintes. Parce qu'une compétence qui ne se transpose pas sur le terrain ne sert
-            à rien.
+            Le geste avant la théorie. Des groupes volontairement limités (6 à 8 stagiaires) pour un suivi réel. Des contenus construits sur mesure, ancrés dans vos chantiers et vos contraintes. Je forme en présentiel, en visio collective (groupe) ou en visio individuelle, selon le format le plus adapté à votre équipe. Parce qu'une compétence qui ne se transpose pas sur le terrain ne sert à rien.
           </p>
         </div>
       </section>
