@@ -34,7 +34,7 @@ function AProposPage() {
             Le BTP transmis par ceux qui l'ont bâti.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-white/85">
-            PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain. J'ai porté 25 ans de chantiers – gros œuvre, génie civil, encadrement –, de mon premier coffrage en 2000 jusqu'à la conduite de chantiers de génie civil industriel à plus de 5 M€. J'ai structuré cette expérience en parcours de formation opérationnels, pour transmettre exactement ce que j'ai pratiqué.
+            PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain. Pendant 25 ans, j'ai porté des chantiers de gros œuvre et de génie civil, du compagnonnage à l'encadrement. Aujourd'hui, je structure cette expérience en parcours de formation opérationnels, pour transmettre exactement ce que j'ai pratiqué.
           </p>
         </div>
       </section>
@@ -59,9 +59,9 @@ function AProposPage() {
               J'ai occupé chaque poste que je forme aujourd'hui.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-foreground/85">
-              En 2000, je posais mon premier coffrage. Vingt-cinq ans plus tard, je dirigeais des
+              En 1999, je posais mon premier coffrage. Vingt-cinq ans plus tard, je dirigeais des
               chantiers de génie civil industriel à plus de 5 M€. Entre les deux, j'ai gravi tous
-              les échelons. C'est ce parcours que je transmets.
+              les échelons – et c'est ce parcours que je transmets.
             </p>
           </div>
         </div>
@@ -117,7 +117,7 @@ function AProposPage() {
             Du chantier à la transmission
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Depuis 2020, je forme les équipes de grands groupes du BTP. Maître de conférences associé en génie civil à l'IUT de Béthune depuis 2025, intervenant à Polytech Lille, formateur à l'ESCT, pour Le Moniteur et pour La Solive. En 2024, j'ai fondé PROCESSBTP pour mettre cette double culture, terrain et académique, au service de la montée en compétence de vos équipes.
+            Depuis 2020, je forme les équipes de grands groupes du BTP. Maître de conférences associé en génie civil à l'IUT de Béthune depuis 2025, j'interviens également à Polytech Lille et je forme à l'ESCT, pour Le Moniteur et pour La Solive. En 2024, j'ai fondé PROCESSBTP pour mettre cette double culture, terrain et académique, au service de la montée en compétence de vos équipes.
           </p>
         </div>
       </section>
