@@ -5,7 +5,7 @@ import { founderJsonLd } from "@/lib/seo";
 
 const TITLE = "À propos — PROCESSBTP, organisme de formation BTP";
 const DESCRIPTION =
-  "PROCESSBTP, organisme de formation certifié Qualiopi, fondé par un vétéran du BTP : 23 ans de chantier, double Master, transmission structurée comme un process qualité.";
+  "PROCESSBTP, organisme de formation certifié Qualiopi, fondé par un vétéran du BTP : 25 ans de chantier, double Master, transmission structurée comme un process qualité.";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
@@ -34,7 +34,7 @@ function AProposPage() {
             Le BTP transmis par ceux qui l'ont bâti.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-white/85">
-            PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain. J'ai porté 23 ans de chantiers – gros œuvre, génie civil, encadrement –, de mon premier coffrage en 2000 jusqu'à la conduite de chantiers de génie civil industriel à plus de 5 M€. J'ai structuré cette expérience en parcours de formation opérationnels, pour transmettre exactement ce que j'ai pratiqué.
+            PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain. J'ai porté 25 ans de chantiers – gros œuvre, génie civil, encadrement –, de mon premier coffrage en 2000 jusqu'à la conduite de chantiers de génie civil industriel à plus de 5 M€. J'ai structuré cette expérience en parcours de formation opérationnels, pour transmettre exactement ce que j'ai pratiqué.
           </p>
         </div>
       </section>
