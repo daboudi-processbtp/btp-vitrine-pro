@@ -34,9 +34,7 @@ function AProposPage() {
             Le BTP transmis par ceux qui l'ont bâti.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-white/85">
-            PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain.
-            Notre fondateur a porté 23 ans de chantiers — gros œuvre, génie civil, encadrement — avant
-            de structurer son expérience en parcours de formation opérationnels.
+            PROCESSBTP est né d'une conviction simple : la meilleure pédagogie BTP vient du terrain. J'ai porté 23 ans de chantiers – gros œuvre, génie civil, encadrement –, de mon premier coffrage en 2000 jusqu'à la conduite de chantiers de génie civil industriel à plus de 5 M€. J'ai structuré cette expérience en parcours de formation opérationnels, pour transmettre exactement ce que j'ai pratiqué.
           </p>
         </div>
       </section>
