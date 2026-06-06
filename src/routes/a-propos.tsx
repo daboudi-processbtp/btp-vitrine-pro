@@ -82,6 +82,7 @@ function AProposPage() {
               "Chef d'équipe gros œuvre",
               "Chef de chantier",
               "Chef de chantier principal",
+              "Conducteur de travaux",
               "Conducteur de travaux principal en génie civil chez Vinci Construction",
             ].map((step, i) => (
               <li key={step} className="relative pb-6 last:pb-0">
