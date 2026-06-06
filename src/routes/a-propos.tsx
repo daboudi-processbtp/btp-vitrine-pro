@@ -131,11 +131,45 @@ function AProposPage() {
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
             Double Master 2 : Management de projet génie civil à l'École Supérieure de Conduite de Travaux, et Management et développement des entreprises à l'Institut d'Administration des Entreprises (IAE) de Lille. Titre Professionnel Chef de chantier. Habilitation membre de jury pour le Titre Professionnel Conducteur de travaux. Organisme certifié Qualiopi, Référent Handicap (RPSH), Référent OPPBTP. Formations éligibles CPF.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <TrustBadge variant="qualiopi">Qualiopi</TrustBadge>
-            <TrustBadge>RPSH</TrustBadge>
-            <TrustBadge variant="cpf">CPF</TrustBadge>
+          <div className="mt-8 flex flex-wrap items-center gap-6">
+            <div
+              className="flex h-24 w-40 items-center justify-center rounded-lg border border-border bg-white p-3 shadow-sm"
+              aria-label="Qualiopi — processus certifié"
+              title="Qualiopi — processus certifié"
+            >
+              <img
+                src={qualiopiLogo.url}
+                alt="Qualiopi — processus certifié République Française"
+                className="max-h-full max-w-full object-contain"
+                width={160}
+                height={96}
+                loading="lazy"
+              />
+            </div>
+            <div
+              className="flex h-24 w-40 flex-col items-center justify-center rounded-lg border border-dashed border-border bg-card p-3 text-center shadow-sm"
+              aria-label="RPSH — Référent Handicap"
+              title="RPSH — Référent Handicap"
+            >
+              <span className="font-display text-lg font-extrabold text-primary">RPSH</span>
+              <span className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+                Référent Handicap
+              </span>
+            </div>
+            <div
+              className="flex h-24 w-40 flex-col items-center justify-center rounded-lg border border-dashed border-border bg-card p-3 text-center shadow-sm"
+              aria-label="CPF — Formations éligibles"
+              title="CPF — Formations éligibles"
+            >
+              <span className="font-display text-lg font-extrabold text-primary">CPF</span>
+              <span className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+                Formations éligibles
+              </span>
+            </div>
           </div>
+          <p className="mt-3 text-xs italic text-muted-foreground">
+            Logos officiels RPSH et CPF à intégrer après réception des fichiers définitifs.
+          </p>
         </div>
       </section>
 
