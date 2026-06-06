@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CtaLink } from "@/components/brand/CtaButton";
 import { TrustBadge } from "@/components/brand/Badge";
 import { founderJsonLd } from "@/lib/seo";
+import qualiopiLogo from "@/assets/qualiopi.png.asset.json";
 
 const TITLE = "À propos — PROCESSBTP, organisme de formation BTP";
 const DESCRIPTION =
