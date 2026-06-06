@@ -130,10 +130,7 @@ function AProposPage() {
             Mes diplômes et certifications
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Double Master 2 – Management de projet génie civil (ESCT) et Management et
-            développement des entreprises (MDE), IAE Lille. Titre Professionnel Chef de chantier.
-            Organisme certifié Qualiopi, Référent Handicap (RPSH), Référent OPPBTP. Formations
-            éligibles CPF.
+            Double Master 2 : Management de projet génie civil à l'École Supérieure de Conduite de Travaux, et Management et développement des entreprises à l'Institut d'Administration des Entreprises (IAE) de Lille. Titre Professionnel Chef de chantier. Habilitation membre de jury pour le Titre Professionnel Conducteur de travaux. Organisme certifié Qualiopi, Référent Handicap (RPSH), Référent OPPBTP. Formations éligibles CPF.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             <TrustBadge variant="qualiopi">Qualiopi</TrustBadge>
