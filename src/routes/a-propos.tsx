@@ -59,7 +59,7 @@ function AProposPage() {
               J'ai occupé chaque poste que je forme aujourd'hui.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-foreground/85">
-              En 2000, je posais mon premier coffrage. Vingt-trois ans plus tard, je dirigeais des
+              En 2000, je posais mon premier coffrage. Vingt-cinq ans plus tard, je dirigeais des
               chantiers de génie civil industriel à plus de 5 M€. Entre les deux, j'ai gravi tous
               les échelons. C'est ce parcours que je transmets.
             </p>
