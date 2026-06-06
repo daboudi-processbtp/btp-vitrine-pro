@@ -100,8 +100,9 @@ function AProposPage() {
           <p className="mt-8 text-base leading-relaxed text-foreground/85 sm:text-lg">
             J'ai livré des ouvrages industriels exigeants – usine pharmaceutique, station de
             traitement d'eau potable, centre de revalorisation énergétique, sites classés – sur
-            des budgets de 900 000 € à 5 M€. Je ne forme pas à partir d'un manuel : je forme à
-            partir de ce que j'ai construit.
+            des budgets de 900 000 € à 5 M€, ainsi que des logements collectifs et des maisons
+            individuelles. Je ne forme pas à partir d'un manuel : je forme à partir de ce que
+            j'ai construit.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-foreground/70">
