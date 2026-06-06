@@ -8,13 +8,10 @@ const steps = [
 
 export function ProcessSteps() {
   return (
-    <section className="bg-background py-20" aria-labelledby="process-title">
+    <section className="bg-background py-20" aria-label="Comment ça marche">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-secondary">Comment ça marche</p>
-          <h2 id="process-title" className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
-            Trois étapes, zéro ambiguïté.
-          </h2>
         </div>
         <ol className="mt-12 grid gap-6 md:grid-cols-3">
           {steps.map(({ num, icon: Icon, title, desc }) => (

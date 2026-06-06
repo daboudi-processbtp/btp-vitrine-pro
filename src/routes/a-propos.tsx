@@ -119,9 +119,7 @@ function AProposPage() {
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
             Depuis 2020, je forme les équipes de grands groupes du BTP. Maître de conférences
-            associé en génie civil à l'IUT de Béthune, intervenant à Polytech Lille et à l'ESCT,
-            formateur pour Le Moniteur – j'enseigne aussi bien aux compagnons sur le terrain
-            qu'aux futurs managers de projet en milieu académique. En 2024, j'ai fondé PROCESSBTP
+            associé en génie civil à l'IUT de Béthune depuis 2025, intervenant à Polytech Lille, à l'ESCT et pour Le Moniteur. En 2024, j'ai fondé PROCESSBTP
             pour mettre cette double culture, terrain et académique, au service de la montée en
             compétence de vos équipes.
           </p>
