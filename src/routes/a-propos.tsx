@@ -120,6 +120,16 @@ function AProposPage() {
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
             Depuis 2020, je forme les équipes de grands groupes du BTP. Maître de conférences associé en génie civil à l'IUT de Béthune depuis 2025, j'interviens également à Polytech Lille et je forme à l'ESCT, pour Le Moniteur et pour La Solive. En 2024, j'ai fondé PROCESSBTP pour mettre cette double culture, terrain et académique, au service de la montée en compétence de vos équipes.
           </p>
+          <PartnerStrip
+            title="Écoles et organismes où j'interviens"
+            logos={schoolLogos}
+            className="mt-12"
+          />
+          <PartnerStrip
+            title="Ils me font confiance"
+            logos={trustLogos}
+            className="mt-12"
+          />
         </div>
       </section>
 
