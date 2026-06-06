@@ -1,7 +1,7 @@
 import { Hammer, GraduationCap, Wrench, Settings2, Users, BadgeCheck } from "lucide-react";
 
 export const whyItems = [
-  { icon: Hammer, title: "23 ans sur les chantiers", desc: "Une expertise terrain qui précède la salle de classe — les cas pratiques viennent du réel." },
+  { icon: Hammer, title: "25 ans sur les chantiers", desc: "Une expertise terrain qui précède la salle de classe — les cas pratiques viennent du réel." },
   { icon: GraduationCap, title: "Double Master", desc: "Solides fondamentaux techniques et managériaux, ancrés dans la pratique du génie civil." },
   { icon: Wrench, title: "Expertise hands-on", desc: "Les concepts s'incarnent en gestes, en plans, en situations rencontrées sur opération." },
   { icon: Settings2, title: "Contenus sur mesure", desc: "Cadrage précis du besoin entreprise et adaptation des programmes à votre contexte." },
@@ -19,7 +19,7 @@ export function WhyProcessBTP() {
             La transmission d'un vétéran du BTP, structurée comme un process qualité.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-foreground/80">
-            PROCESSBTP, c'est l'expertise personnelle d'un fondateur qui a porté 23 ans de chantiers
+            PROCESSBTP, c'est l'expertise personnelle d'un fondateur qui a porté 25 ans de chantiers
             avant de la transmettre. Nos formations sont conçues pour des professionnels qui veulent
             une pédagogie utile, exigeante, et opérationnelle dès le retour sur site.
           </p>

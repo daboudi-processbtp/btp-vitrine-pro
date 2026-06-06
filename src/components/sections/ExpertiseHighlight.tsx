@@ -17,7 +17,7 @@ export function ExpertiseHighlight() {
             Vos équipes formées par quelqu'un qui a tenu chaque poste qu'il enseigne.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-foreground/80">
-            23 ans sur les chantiers, double Master en génie civil et management, parcours Vinci.
+            25 ans sur les chantiers, double Master en génie civil et management, parcours Vinci.
             Une transmission qui part du terrain, pas du manuel.
           </p>
         </div>

@@ -28,7 +28,7 @@ export function founderJsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Fondateur PROCESSBTP",
-    jobTitle: "Formateur BTP — 23 ans d'expérience chantier",
+    jobTitle: "Formateur BTP — 25 ans d'expérience chantier",
     worksFor: { "@type": "EducationalOrganization", name: ORG_NAME },
     description:
       "Vétéran du bâtiment et du génie civil, double Master, devenu formateur pour transmettre l'expertise terrain.",
