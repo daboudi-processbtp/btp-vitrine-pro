@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
+import logoAsset from "@/assets/processbtp-logo.png.asset.json";
 
 const NAV: { to: string; label: string; exact?: boolean }[] = [
   { to: "/", label: "Accueil", exact: true },
