@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "@/components/brand/Logo";
-import { TrustBadge } from "@/components/brand/Badge";
-import { ORG_LEGAL } from "@/lib/seo";
+import logoAsset from "@/assets/processbtp-logo.png.asset.json";
 
 export function Footer() {
   return (
@@ -9,7 +8,17 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <Logo variant="light" />
+            <div className="flex items-center gap-3">
+              <img
+                src={logoAsset.url}
+                alt="Logo PROCESSBTP Formation"
+                className="h-12 w-12 rounded-md object-cover"
+                loading="lazy"
+                width={48}
+                height={48}
+              />
+              <Logo variant="light" />
+            </div>
             <p className="mt-4 max-w-xs text-sm text-white/80">
               Organisme de formation BTP, certifié Qualiopi. Du geste technique au pilotage de projet.
             </p>
@@ -40,8 +49,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-white/15 pt-6">
-          <p className="text-xs leading-relaxed text-white/75">{ORG_LEGAL}</p>
-          <p className="mt-3 text-xs text-white/60">
+          <p className="text-xs text-white/60">
             © {new Date().getFullYear()} PROCESSBTP — Tous droits réservés.
           </p>
         </div>
