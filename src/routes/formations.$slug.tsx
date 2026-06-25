@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { findTrainingBySlug } from "@/lib/trainings";
+import type { Training } from "@/components/ui/TrainingCard";
 import { findTrainingDetail, type TrainingDetailContent } from "@/lib/training-details";
 import { courseJsonLd } from "@/lib/seo";
 
@@ -58,7 +59,7 @@ export const Route = createFileRoute("/formations/$slug")({
 
 function TrainingDetailPage() {
   const data = Route.useLoaderData();
-  const { training } = data;
+  const training = data.training as Training;
   const detail = data.detail as TrainingDetailContent | undefined;
 
   const ctaClasses =
