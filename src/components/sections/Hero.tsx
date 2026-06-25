@@ -21,7 +21,7 @@ export function Hero() {
             Organisme certifié Qualiopi
           </span>
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-            Des formations BTP éligibles CPF, ancrées dans le réel du chantier.
+            Des formations BTP certifiantes, ancrées dans le réel du chantier.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
             Du geste technique au pilotage de projet — partout en France, en présentiel ou en classe
