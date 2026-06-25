@@ -1,34 +1,15 @@
 import { TrainingCard, type Training } from "@/components/ui/TrainingCard";
+import { findTrainingBySlug } from "@/lib/trainings";
 
-const featured: Training[] = [
-  {
-    slug: "tp-chef-de-chantier",
-    family: "Encadrement de chantier",
-    title: "Accompagnement TP — Chef de chantier gros œuvre",
-    duration: "Parcours sur mesure",
-    cpf: true,
-    summary:
-      "Préparation au titre professionnel : organisation, sécurité, qualité, conduite d'équipe en gros œuvre.",
-  },
-  {
-    slug: "tp-conducteur-de-travaux",
-    family: "Pilotage & ingénierie",
-    title: "Accompagnement TP — Conducteur de travaux",
-    duration: "Parcours sur mesure",
-    cpf: true,
-    summary:
-      "Préparation au titre professionnel : pilotage technique, financier et contractuel d'opérations BTP.",
-  },
-  {
-    slug: "lecture-de-plan-initiation",
-    family: "Exécution & terrain",
-    title: "Lecture de plan : initiation",
-    duration: "2 jours (14 h)",
-    cpf: false,
-    summary:
-      "Identifier les symboles d'un plan de coffrage et de ferraillage, situer un ouvrage dans l'espace, relever cotes et niveaux.",
-  },
+const FEATURED_SLUGS = [
+  "accompagnement-tp-chef-de-chantier",
+  "accompagnement-tp-conducteur-de-travaux",
+  "lecture-de-plan-initiation",
 ];
+
+const featured: Training[] = FEATURED_SLUGS.map((slug) => findTrainingBySlug(slug)?.training).filter(
+  (t): t is Training => Boolean(t),
+);
 
 export function FeaturedTrainings() {
   return (
