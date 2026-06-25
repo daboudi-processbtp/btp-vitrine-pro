@@ -156,7 +156,6 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
       },
     ],
     funding: [
-      "CPF",
       "OPCO (selon votre branche)",
       "Plan de développement des compétences",
       "France Travail (selon situation)",
