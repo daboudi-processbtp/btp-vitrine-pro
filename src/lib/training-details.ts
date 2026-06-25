@@ -160,8 +160,7 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
       "Plan de développement des compétences",
       "France Travail (selon situation)",
     ],
-    outcome:
-      "Accompagnement à la certification. Intitulé « accompagnement à la certification » tant que l'habilitation DREETS n'est pas obtenue.",
+    outcome: "Accompagnement à la certification RNCP40217.",
   },
   "lecture-de-plan-initiation": {
     duration: "2 jours (14 h)",
