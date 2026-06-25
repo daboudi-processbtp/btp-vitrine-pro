@@ -25,21 +25,18 @@ export const Route = createFileRoute("/formations")({
 function Catalogue() {
   const [familyFilter, setFamilyFilter] = useState<string>("all");
   const [modalityFilter, setModalityFilter] = useState<"all" | Modality>("all");
-  const [cpfOnly, setCpfOnly] = useState(false);
-
   const filteredCatalogue = useMemo(() => {
     return catalogue
       .filter((g) => familyFilter === "all" || g.id === familyFilter)
       .map((g) => ({
         ...g,
         trainings: g.trainings.filter((t) => {
-          if (cpfOnly && !t.cpf) return false;
           if (modalityFilter !== "all" && !getModalities(t).includes(modalityFilter)) return false;
           return true;
         }),
       }))
       .filter((g) => g.trainings.length > 0);
-  }, [familyFilter, modalityFilter, cpfOnly]);
+  }, [familyFilter, modalityFilter]);
 
   const totalCount = filteredCatalogue.reduce((n, g) => n + g.trainings.length, 0);
 
@@ -60,7 +57,7 @@ function Catalogue() {
 
       <section className="border-b border-border bg-card" aria-label="Filtres">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             <div>
               <label htmlFor="filter-family" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Famille
@@ -91,17 +88,6 @@ function Catalogue() {
                 <option value="presentiel">Présentiel</option>
                 <option value="distanciel">Distanciel</option>
               </select>
-            </div>
-            <div className="flex items-end">
-              <label className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border bg-background px-3 py-2.5 text-sm font-medium text-foreground">
-                <input
-                  type="checkbox"
-                  checked={cpfOnly}
-                  onChange={(e) => setCpfOnly(e.target.checked)}
-                  className="h-4 w-4 accent-primary"
-                />
-                Éligible CPF uniquement
-              </label>
             </div>
           </div>
           <p className="mt-4 text-xs text-muted-foreground" aria-live="polite">
