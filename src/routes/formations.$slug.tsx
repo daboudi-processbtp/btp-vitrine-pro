@@ -2,15 +2,13 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { findTrainingBySlug } from "@/lib/trainings";
 import type { Training } from "@/components/ui/TrainingCard";
-import { findTrainingDetail, type TrainingDetailContent } from "@/lib/training-details";
 import { courseJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/formations/$slug")({
   loader: ({ params }) => {
     const found = findTrainingBySlug(params.slug);
     if (!found) throw notFound();
-    const detail = findTrainingDetail(params.slug);
-    return { ...found, detail };
+    return found;
   },
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [{ title: "Formation — PROCESSBTP" }] };
@@ -57,43 +55,55 @@ export const Route = createFileRoute("/formations/$slug")({
   ),
 });
 
+function familyHash(family: Training["family"]): string {
+  switch (family) {
+    case "Exécution & terrain":
+      return "execution";
+    case "Encadrement de chantier":
+      return "encadrement";
+    case "Pilotage & ingénierie":
+      return "pilotage";
+    case "Gestion & développement (artisans)":
+      return "gestion-developpement";
+  }
+}
+
 function TrainingDetailPage() {
   const data = Route.useLoaderData();
   const training = data.training as Training;
-  const detail = data.detail as TrainingDetailContent | undefined;
 
   const ctaClasses =
     "inline-flex h-12 items-center justify-center gap-2 rounded-md bg-cta px-6 text-base font-semibold text-cta-foreground shadow-sm transition-colors hover:bg-cta/90";
 
-  // Compliance: compute the canonical certification label
-  const certType =
-    training.certificationType ?? detail?.certificationType ?? "attestation";
-  const rncpCode = training.rncpCode ?? detail?.rncpCode;
+  // Compliance: certification label
+  const certType = training.certificationType ?? "attestation";
+  const rncpCode = training.rncpCode;
   const certificationLabel =
-    certType === "rncp" && rncpCode
-      ? `Accompagnement à la certification ${rncpCode}`
-      : certType === "rncp"
-        ? "Accompagnement à la certification"
+    certType === "rncp"
+      ? rncpCode
+        ? `Accompagnement à la certification ${rncpCode}`
+        : "Accompagnement à la certification"
+      : certType === "module"
+        ? "Module court — Attestation de compétences"
         : "Attestation de compétences";
   const outcomeText =
     certType === "rncp" && rncpCode
-      ? `Accompagnement à la certification ${rncpCode}.`
+      ? `Accompagnement à la certification ${rncpCode}. La certification est délivrée par le Ministère du Travail à l'issue des épreuves officielles, hors PROCESSBTP.`
       : "Attestation de compétences délivrée sur la base d'une évaluation continue.";
 
   // Pricing
   const showPrice = training.prixAffiche === true && typeof training.prix === "number";
   const priceLabel = showPrice ? `${training.prix} € HT` : "Sur devis";
 
-  // Stub mode (sur demande)
-  const isStub = training.stub === true;
+  // Stub mode
+  const isStub = training.surDemande === true || training.stub === true;
 
-  // Hide any CPF mention in financement (kept hidden until EDOF)
-  const filteredFunding = (detail?.funding ?? []).filter(
-    (f) => !/\bCPF\b/i.test(f),
-  );
-  const trainingFunding = (training.financement ?? []).filter(
-    (f) => !/\bCPF\b/i.test(f),
-  );
+  // Effectif display
+  const effectifLabel = training.effectifMax
+    ? certType === "rncp"
+      ? `${training.effectifMax} stagiaires min`
+      : `${training.effectifMax} stagiaire${training.effectifMax > 1 ? "s" : ""} max`
+    : undefined;
 
   return (
     <main id="main">
@@ -106,7 +116,7 @@ function TrainingDetailPage() {
               </li>
               <li aria-hidden="true">›</li>
               <li>
-                <Link to="/formations" hash={training.family === "Exécution & terrain" ? "execution" : training.family === "Encadrement de chantier" ? "encadrement" : training.family === "Pilotage & ingénierie" ? "pilotage" : "gestion-developpement"} className="hover:text-white">
+                <Link to="/formations" hash={familyHash(training.family)} className="hover:text-white">
                   {training.family}
                 </Link>
               </li>
@@ -127,6 +137,11 @@ function TrainingDetailPage() {
                 {priceLabel}
               </span>
             )}
+            {certType === "rncp" && rncpCode && (
+              <span className="inline-flex items-center rounded-md border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
+                {rncpCode}
+              </span>
+            )}
           </div>
         </div>
       </section>
@@ -137,9 +152,10 @@ function TrainingDetailPage() {
             <div className="prose prose-slate max-w-none">
               <h2 className="font-display text-2xl font-bold text-foreground">Présentation</h2>
               <p className="mt-3 text-foreground/90">{training.summary}</p>
+              <p className="mt-3 text-foreground/90">{training.publicVise}</p>
               <p className="mt-3 text-sm text-muted-foreground">
-                Ce parcours est en cours de structuration. Contactez-nous pour échanger sur
-                vos besoins et recevoir un cadrage adapté.
+                Ce parcours d'accompagnement à la certification {rncpCode ?? ""} est proposé sur
+                demande. Programme, durée et tarif définis après un échange de cadrage.
               </p>
               <div className="mt-6 not-prose">
                 <Link to="/contact" search={{ formation: training.title }} className={ctaClasses}>
@@ -147,39 +163,31 @@ function TrainingDetailPage() {
                 </Link>
               </div>
             </div>
-          ) : detail ? (
+          ) : (
             <>
               {/* En résumé */}
               <div className="rounded-lg border border-border bg-card p-6">
                 <h2 className="font-display text-sm font-semibold uppercase tracking-wider text-secondary">
                   En résumé
                 </h2>
-                <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-5">
-                  <Summary label="Durée" value={detail.duration} />
-                  <Summary label="Effectif" value={detail.groupSize} />
-                  <Summary label="Modalité" value={detail.modality} />
+                <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-6">
+                  {training.duration && <Summary label="Durée" value={training.duration} />}
+                  {effectifLabel && <Summary label="Effectif" value={effectifLabel} />}
+                  {training.modalite && <Summary label="Modalité" value={training.modalite} />}
                   <Summary label="À l'issue" value={certificationLabel} />
-                  <Summary label="Public" value={detail.audienceShort} />
+                  {training.audience && <Summary label="Public" value={training.audience} />}
                   <Summary label="Tarif" value={priceLabel} />
                 </dl>
               </div>
 
-              <Block title="À qui s'adresse cette formation ?">
-                {training.publicVise && (
-                  <p className="mb-4 text-foreground/90">{training.publicVise}</p>
-                )}
-                <ul className="space-y-2">
-                  {detail.targetProfiles.map((p) => (
-                    <li key={p} className="flex gap-2 text-foreground/90">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Block>
+              {training.publicVise && (
+                <Block title="À qui s'adresse cette formation ?">
+                  <p className="text-foreground/90">{training.publicVise}</p>
+                </Block>
+              )}
 
-              <Block title="Prérequis">
-                {training.prerequis && training.prerequis.length > 0 ? (
+              {training.prerequis && training.prerequis.length > 0 && (
+                <Block title="Prérequis">
                   <ul className="space-y-2">
                     {training.prerequis.map((p) => (
                       <li key={p} className="flex gap-2 text-foreground/90">
@@ -188,78 +196,67 @@ function TrainingDetailPage() {
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p className="text-foreground/90">{detail.prerequisites}</p>
-                )}
-              </Block>
+                </Block>
+              )}
 
-              <Block title="Objectifs pédagogiques">
-                <p className="mb-3 text-sm text-muted-foreground">
-                  {certType === "attestation"
-                    ? "Attestation de compétences délivrée sur la base d'une évaluation continue. À l'issue de la formation, le stagiaire sera capable de :"
-                    : "À l'issue de la formation, le stagiaire sera capable de :"}
-                </p>
-                <ul className="space-y-2">
-                  {detail.objectives.map((o) => (
-                    <li key={o} className="flex gap-2 text-foreground/90">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
-                      <span>{o}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Block>
+              {training.objectifs && training.objectifs.length > 0 && (
+                <Block title="Objectifs pédagogiques">
+                  <p className="mb-3 text-sm text-muted-foreground">
+                    À l'issue de la formation, le stagiaire sera capable de :
+                  </p>
+                  <ul className="space-y-2">
+                    {training.objectifs.map((o) => (
+                      <li key={o} className="flex gap-2 text-foreground/90">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                        <span>{o}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Block>
+              )}
 
-              <Block title="Programme détaillé">
-                <div className="space-y-5">
-                  {(training.programme && training.programme.length > 0
-                    ? training.programme.map((p) => ({ title: p.titre, items: p.items }))
-                    : detail.program
-                  ).map((m) => (
-                    <div key={m.title} className="rounded-lg border border-border bg-card p-5">
-                      <h3 className="font-display font-bold text-foreground">{m.title}</h3>
-                      <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-foreground/85">
-                        {m.items.map((i) => <li key={i}>{i}</li>)}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </Block>
+              {training.programme && training.programme.length > 0 && (
+                <Block title="Programme détaillé">
+                  <div className="space-y-5">
+                    {training.programme.map((m) => (
+                      <div key={m.titre} className="rounded-lg border border-border bg-card p-5">
+                        <h3 className="font-display font-bold text-foreground">{m.titre}</h3>
+                        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-foreground/85">
+                          {m.items.map((i) => <li key={i}>{i}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </Block>
+              )}
 
-              {(training.methodesPedagogiques?.length || detail.methodesPedagogiques?.length) ? (
+              {training.methodesPedagogiques && training.methodesPedagogiques.length > 0 && (
                 <Block title="Méthodes pédagogiques">
                   <ul className="list-disc space-y-1.5 pl-5 text-foreground/90">
-                    {(training.methodesPedagogiques ?? detail.methodesPedagogiques ?? []).map((m) => (
-                      <li key={m}>{m}</li>
-                    ))}
+                    {training.methodesPedagogiques.map((m) => <li key={m}>{m}</li>)}
                   </ul>
                 </Block>
-              ) : null}
+              )}
 
-              {(training.supportsPedagogiques?.length || detail.supportsPedagogiques?.length) ? (
+              {training.supportsPedagogiques && training.supportsPedagogiques.length > 0 && (
                 <Block title="Supports pédagogiques">
                   <ul className="list-disc space-y-1.5 pl-5 text-foreground/90">
-                    {(training.supportsPedagogiques ?? detail.supportsPedagogiques ?? []).map((s) => (
-                      <li key={s}>{s}</li>
-                    ))}
+                    {training.supportsPedagogiques.map((s) => <li key={s}>{s}</li>)}
                   </ul>
                 </Block>
-              ) : null}
+              )}
 
-              {(training.modalitesEvaluation || detail.modalitesEvaluation) ? (
+              {training.modalitesEvaluation && (
                 <Block title="Modalités d'évaluation">
-                  <p className="text-foreground/90">
-                    {training.modalitesEvaluation ?? detail.modalitesEvaluation}
-                  </p>
+                  <p className="text-foreground/90">{training.modalitesEvaluation}</p>
                 </Block>
-              ) : null}
+              )}
 
               <div className="mt-10 grid gap-6 md:grid-cols-2">
                 <div className="rounded-lg border border-border bg-card p-6">
                   <h2 className="font-display text-lg font-bold text-foreground">Financement</h2>
                   <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-foreground/85">
-                    {(trainingFunding.length > 0 ? trainingFunding : filteredFunding).map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
+                    {(training.financement ?? []).map((f) => <li key={f}>{f}</li>)}
                   </ul>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-6">
@@ -268,36 +265,30 @@ function TrainingDetailPage() {
                 </div>
               </div>
             </>
-          ) : (
-            <div className="prose prose-slate max-w-none">
-              <h2 className="font-display text-2xl font-bold text-foreground">Présentation</h2>
-              <p className="mt-3 text-foreground/90">{training.summary}</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Le programme détaillé (objectifs pédagogiques, modules, prérequis, modalités
-                d'évaluation, accessibilité) est communiqué sur demande, adapté à votre contexte
-                entreprise.
-              </p>
-            </div>
           )}
 
           {!isStub && (
-          <div className="mt-12 rounded-xl border border-border bg-accent/30 p-6 sm:p-8">
-            <h2 className="font-display text-xl font-bold text-foreground">
-              Intéressé par cette formation ?
-            </h2>
-            <p className="mt-2 text-sm text-foreground/80">
-              Demandez un devis personnalisé : nous vous transmettons le programme complet et un
-              cadrage adapté à vos équipes.
-            </p>
-            <div className="mt-5">
-              <Link to="/contact" search={{ formation: training.title }} className={ctaClasses}>
-                Demander un devis pour cette formation
-              </Link>
+            <div className="mt-12 rounded-xl border border-border bg-accent/30 p-6 sm:p-8">
+              <h2 className="font-display text-xl font-bold text-foreground">
+                Intéressé par cette formation ?
+              </h2>
+              <p className="mt-2 text-sm text-foreground/80">
+                Demandez un devis personnalisé : nous vous transmettons le programme complet et un
+                cadrage adapté à vos équipes.
+              </p>
+              <div className="mt-5">
+                <Link to="/contact" search={{ formation: training.title }} className={ctaClasses}>
+                  Demander un devis pour cette formation
+                </Link>
+              </div>
             </div>
-          </div>
           )}
+
           <div className="mt-8">
-            <Link to="/formations" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
+            <Link
+              to="/formations"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
+            >
               <ArrowLeft className="h-4 w-4" /> Retour au catalogue
             </Link>
           </div>

@@ -35,7 +35,11 @@ export type Training = {
   prixAffiche?: boolean;
   prix?: number | null;
   objectifs?: string[];
+  // Display / scheduling helpers
+  effectifMax?: number;
+  modalite?: string;
   // Stub: minimal fiche only (no programme/objectifs)
+  surDemande?: boolean;
   stub?: boolean;
 };
 
