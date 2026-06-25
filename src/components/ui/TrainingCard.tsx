@@ -4,15 +4,39 @@ import { TrustBadge } from "@/components/brand/Badge";
 
 export type Modality = "presentiel" | "distanciel";
 
+export type TrainingFamilyName =
+  | "Exécution & terrain"
+  | "Encadrement de chantier"
+  | "Pilotage & ingénierie"
+  | "Gestion & développement (artisans)";
+
+export type ProgrammeEntry = { titre: string; items: string[] };
+
 export type Training = {
   slug: string;
   title: string;
-  family: "Exécution & terrain" | "Encadrement de chantier" | "Pilotage & ingénierie";
+  family: TrainingFamilyName;
   duration?: string;
   cpf?: boolean;
   summary: string;
   modalities?: Modality[];
   audience?: string;
+  // --- Extensions (all optional) -------------------------------------------
+  prerequis?: string[];
+  publicVise?: string;
+  programme?: ProgrammeEntry[];
+  methodesPedagogiques?: string[];
+  supportsPedagogiques?: string[];
+  modalitesEvaluation?: string;
+  financement?: string[];
+  certificationType?: "attestation" | "rncp" | "module";
+  rncpCode?: string;
+  // Pricing
+  prixAffiche?: boolean;
+  prix?: number | null;
+  objectifs?: string[];
+  // Stub: minimal fiche only (no programme/objectifs)
+  stub?: boolean;
 };
 
 export function getModalities(t: Training): Modality[] {
@@ -28,6 +52,8 @@ export function getAudience(t: Training): string {
       return "Chefs d'équipe, chefs de chantier";
     case "Pilotage & ingénierie":
       return "Conducteurs de travaux, ingénieurs, chargés d'affaires";
+    case "Gestion & développement (artisans)":
+      return "Artisans, dirigeants TPE/PME du bâtiment";
   }
 }
 
