@@ -17,7 +17,6 @@ const audiences = [
     eyebrow: "Pour les particuliers",
     title: "Montez en compétences ou préparez une reconversion.",
     points: [
-      "Financement CPF (Titres Professionnels RNCP)",
       "France Travail ou financement personnel",
       "Accompagnement individualisé tout au long du parcours",
     ],
