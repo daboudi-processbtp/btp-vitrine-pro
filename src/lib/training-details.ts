@@ -12,6 +12,12 @@ export type TrainingDetailContent = {
   program: { title: string; items: string[] }[];
   funding: string[];
   outcome: string;
+  // --- Extensions (all optional) -----------------------------------------
+  methodesPedagogiques?: string[];
+  supportsPedagogiques?: string[];
+  modalitesEvaluation?: string;
+  certificationType?: "attestation" | "rncp" | "module";
+  rncpCode?: string;
 };
 
 export const trainingDetails: Record<string, TrainingDetailContent> = {
@@ -19,8 +25,9 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
     duration: "224 h — 1 vendredi/sem sur 5 mois + 2 j/sem sur 1 mois",
     groupSize: "6 stagiaires min (multi-entreprises)",
     modality: "Présentiel",
-    outcomeKind:
-      "Accompagnement à la certification RNCP38721 (niveau 5, Ministère du Travail) — éligible CPF",
+    outcomeKind: "Accompagnement à la certification RNCP38721",
+    certificationType: "rncp",
+    rncpCode: "RNCP38721",
     audienceShort: "Assistant chef de chantier",
     targetProfiles: [
       "Assistants chefs de chantier visant le titre",
@@ -74,20 +81,19 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
       },
     ],
     funding: [
-      "CPF",
       "OPCO (selon votre branche)",
       "Plan de développement des compétences",
       "France Travail (selon situation)",
     ],
-    outcome:
-      "Accompagnement à la certification. Tant que l'habilitation DREETS n'est pas obtenue, l'intitulé reste « accompagnement à la certification », jamais « formation certifiante ».",
+    outcome: "Accompagnement à la certification RNCP38721.",
   },
   "tp-conducteur-de-travaux": {
     duration: "224 h — 1 lundi/sem sur 5 mois + 2 j/sem sur 1 mois",
     groupSize: "6 stagiaires min (multi-entreprises)",
     modality: "Présentiel",
-    outcomeKind:
-      "Accompagnement à la certification RNCP40217 (niveau 5, Ministère du Travail) — éligible CPF",
+    outcomeKind: "Accompagnement à la certification RNCP40217",
+    certificationType: "rncp",
+    rncpCode: "RNCP40217",
     audienceShort: "Chef de chantier → conducteur de travaux junior",
     targetProfiles: [
       "Chefs de chantier visant la conduite de travaux",
