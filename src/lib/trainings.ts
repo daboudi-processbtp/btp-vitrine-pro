@@ -187,6 +187,44 @@ export const catalogue: TrainingFamily[] = [
       },
     ],
   },
+  {
+    id: "gestion-developpement",
+    name: "Gestion & développement (artisans)",
+    trainings: [
+      {
+        slug: "excel-pour-debutant",
+        family: "Gestion & développement (artisans)",
+        title: "Excel pour débutant",
+        duration: "2 jours (14 h)",
+        modalities: ["presentiel", "distanciel"],
+        audience: "Artisans, dirigeants TPE/PME du bâtiment",
+        prixAffiche: true,
+        prix: 800,
+        summary:
+          "Prendre en main Excel pour suivre devis, factures et heures : tableaux, formules de base et mise en forme adaptées au quotidien d'un artisan.",
+      },
+      {
+        slug: "charge-d-affaires",
+        family: "Gestion & développement (artisans)",
+        title: "Chargé d'affaires",
+        modalities: ["presentiel", "distanciel"],
+        audience: "Artisans, dirigeants TPE/PME du bâtiment",
+        stub: true,
+        summary:
+          "Parcours en cours de structuration : développement commercial, chiffrage et suivi d'affaires pour les TPE/PME du bâtiment. Contactez-nous pour en discuter.",
+      },
+      {
+        slug: "manager-de-projets",
+        family: "Gestion & développement (artisans)",
+        title: "Manager de projets",
+        modalities: ["presentiel", "distanciel"],
+        audience: "Artisans, dirigeants TPE/PME du bâtiment",
+        stub: true,
+        summary:
+          "Parcours en cours de structuration : pilotage transverse d'opérations multi-corps d'état pour artisans en développement. Contactez-nous pour en discuter.",
+      },
+    ],
+  },
 ];
 
 export function findTrainingBySlug(slug: string): { training: Training; family: TrainingFamily } | null {
