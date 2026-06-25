@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     q: "Comment financer ma formation ?",
-    a: "Plusieurs dispositifs existent selon votre situation : OPCO et plan de développement des compétences pour les entreprises, CPF pour les parcours Titre Pro, France Travail pour les demandeurs d'emploi, ou financement sur fonds propres. Je vous oriente vers la solution la plus adaptée dès la phase de cadrage.",
+    a: "Plusieurs dispositifs existent selon votre situation : OPCO et plan de développement des compétences pour les entreprises, France Travail pour les demandeurs d'emploi, ou financement sur fonds propres. Je vous oriente vers la solution la plus adaptée dès la phase de cadrage.",
   },
   {
     q: "Quels délais pour mettre en place une session ?",

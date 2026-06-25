@@ -25,7 +25,6 @@ export function Footer() {
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Qualiopi</span>
               <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">RPSH</span>
-              <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">CPF</span>
             </div>
           </div>
 

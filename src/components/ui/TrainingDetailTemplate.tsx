@@ -28,7 +28,6 @@ export function TrainingDetailTemplate({ data }: { data: TrainingDetail }) {
         <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
           {data.family}
         </span>
-        {data.cpf && <TrustBadge variant="cpf">CPF</TrustBadge>}
         {data.certification && <TrustBadge>{data.certification}</TrustBadge>}
       </div>
       <h1 className="mt-4 text-3xl font-extrabold leading-tight text-foreground md:text-4xl">
