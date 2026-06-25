@@ -6,7 +6,7 @@ import { catalogue } from "@/lib/trainings";
 
 const TITLE = "Catalogue des formations BTP — PROCESSBTP";
 const DESCRIPTION =
-  "Toutes les formations PROCESSBTP : exécution & terrain, encadrement de chantier, pilotage & ingénierie. Éligibles CPF, Qualiopi.";
+  "Toutes les formations PROCESSBTP : exécution & terrain, encadrement de chantier, pilotage & ingénierie. Certifié Qualiopi.";
 
 export const Route = createFileRoute("/formations")({
   head: () => ({
