@@ -12,6 +12,12 @@ export type TrainingDetailContent = {
   program: { title: string; items: string[] }[];
   funding: string[];
   outcome: string;
+  // --- Extensions (all optional) -----------------------------------------
+  methodesPedagogiques?: string[];
+  supportsPedagogiques?: string[];
+  modalitesEvaluation?: string;
+  certificationType?: "attestation" | "rncp" | "module";
+  rncpCode?: string;
 };
 
 export const trainingDetails: Record<string, TrainingDetailContent> = {
@@ -19,8 +25,9 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
     duration: "224 h — 1 vendredi/sem sur 5 mois + 2 j/sem sur 1 mois",
     groupSize: "6 stagiaires min (multi-entreprises)",
     modality: "Présentiel",
-    outcomeKind:
-      "Accompagnement à la certification RNCP38721 (niveau 5, Ministère du Travail) — éligible CPF",
+    outcomeKind: "Accompagnement à la certification RNCP38721",
+    certificationType: "rncp",
+    rncpCode: "RNCP38721",
     audienceShort: "Assistant chef de chantier",
     targetProfiles: [
       "Assistants chefs de chantier visant le titre",
@@ -74,20 +81,19 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
       },
     ],
     funding: [
-      "CPF",
       "OPCO (selon votre branche)",
       "Plan de développement des compétences",
       "France Travail (selon situation)",
     ],
-    outcome:
-      "Accompagnement à la certification. Tant que l'habilitation DREETS n'est pas obtenue, l'intitulé reste « accompagnement à la certification », jamais « formation certifiante ».",
+    outcome: "Accompagnement à la certification RNCP38721.",
   },
   "tp-conducteur-de-travaux": {
     duration: "224 h — 1 lundi/sem sur 5 mois + 2 j/sem sur 1 mois",
     groupSize: "6 stagiaires min (multi-entreprises)",
     modality: "Présentiel",
-    outcomeKind:
-      "Accompagnement à la certification RNCP40217 (niveau 5, Ministère du Travail) — éligible CPF",
+    outcomeKind: "Accompagnement à la certification RNCP40217",
+    certificationType: "rncp",
+    rncpCode: "RNCP40217",
     audienceShort: "Chef de chantier → conducteur de travaux junior",
     targetProfiles: [
       "Chefs de chantier visant la conduite de travaux",
@@ -150,13 +156,11 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
       },
     ],
     funding: [
-      "CPF",
       "OPCO (selon votre branche)",
       "Plan de développement des compétences",
       "France Travail (selon situation)",
     ],
-    outcome:
-      "Accompagnement à la certification. Intitulé « accompagnement à la certification » tant que l'habilitation DREETS n'est pas obtenue.",
+    outcome: "Accompagnement à la certification RNCP40217.",
   },
   "lecture-de-plan-initiation": {
     duration: "2 jours (14 h)",
@@ -1002,6 +1006,79 @@ export const trainingDetails: Record<string, TrainingDetailContent> = {
     ],
     outcome:
       "Attestation de compétences PROCESSBTP délivrée sur la base d'une évaluation continue.",
+  },
+  "excel-pour-debutant": {
+    duration: "2 jours (14 h)",
+    groupSize: "6 stagiaires max",
+    modality: "Présentiel ou classe virtuelle",
+    outcomeKind: "Attestation de compétences",
+    certificationType: "attestation",
+    audienceShort: "Artisans, dirigeants TPE/PME",
+    targetProfiles: [
+      "Artisans du bâtiment",
+      "Dirigeants de TPE/PME",
+      "Conjoints collaborateurs en charge de la gestion",
+      "Assistants administratifs débutants sur Excel",
+    ],
+    prerequisites:
+      "Savoir utiliser un ordinateur et naviguer dans Windows. Aucune connaissance préalable d'Excel requise.",
+    objectives: [
+      "Naviguer dans l'interface Excel et créer un classeur",
+      "Construire un tableau de suivi (devis, factures, heures)",
+      "Utiliser les formules de base (somme, moyenne, pourcentage)",
+      "Mettre en forme et imprimer un tableau lisible",
+    ],
+    program: [
+      {
+        title: "Module 1 — Prise en main",
+        items: [
+          "Interface, rubans et raccourcis essentiels",
+          "Saisie, sélection et déplacement",
+          "Enregistrer et organiser ses fichiers",
+        ],
+      },
+      {
+        title: "Module 2 — Tableaux et mise en forme",
+        items: [
+          "Création d'un tableau de suivi",
+          "Bordures, couleurs, formats de nombre",
+          "Tri et filtres simples",
+        ],
+      },
+      {
+        title: "Module 3 — Formules de base",
+        items: [
+          "Somme, moyenne, min, max",
+          "Calculs de TVA et pourcentages",
+          "Références relatives et absolues",
+        ],
+      },
+      {
+        title: "Module 4 — Restitution",
+        items: [
+          "Mise en page et zones d'impression",
+          "Export PDF",
+          "Bonnes pratiques de classement",
+        ],
+      },
+    ],
+    methodesPedagogiques: [
+      "Alternance d'apports courts et de mises en pratique sur Excel",
+      "Travail à partir de cas concrets : devis, suivi de chantier, planning d'heures",
+    ],
+    supportsPedagogiques: [
+      "Livret stagiaire au format PDF",
+      "Fichiers Excel d'exercices et corrigés",
+    ],
+    modalitesEvaluation:
+      "Évaluation continue par exercices pratiques et un exercice de synthèse en fin de formation.",
+    funding: [
+      "OPCO (selon votre branche)",
+      "Plan de développement des compétences de l'entreprise",
+      "Financement sur fonds propres",
+    ],
+    outcome:
+      "Attestation de compétences délivrée sur la base d'une évaluation continue.",
   },
 };
 

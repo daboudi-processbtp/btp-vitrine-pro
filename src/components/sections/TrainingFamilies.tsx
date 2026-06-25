@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { HardHat, ClipboardList, Compass, ArrowRight } from "lucide-react";
+import { HardHat, ClipboardList, Compass, Briefcase, ArrowRight } from "lucide-react";
 
 const families = [
   {
@@ -20,6 +20,12 @@ const families = [
     hash: "pilotage",
     desc: "Conducteur de travaux, planning, coûts, contractualisation, performance de chantier.",
   },
+  {
+    icon: Briefcase,
+    name: "Gestion & développement (artisans)",
+    hash: "gestion-developpement",
+    desc: "Artisans et dirigeants TPE/PME : outils de gestion, développement commercial, pilotage d'activité.",
+  },
 ];
 
 export function TrainingFamilies() {
@@ -29,10 +35,10 @@ export function TrainingFamilies() {
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-secondary">Notre offre</p>
           <h2 id="families-title" className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
-            Trois familles de formations, un même fil rouge&nbsp;: l'efficacité chantier.
+            Quatre familles de formations, un même fil rouge&nbsp;: l'efficacité chantier.
           </h2>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {families.map(({ icon: Icon, name, desc, hash }) => (
             <Link
               key={name}
