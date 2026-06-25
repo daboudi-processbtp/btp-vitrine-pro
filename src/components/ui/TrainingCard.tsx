@@ -1,7 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Clock, Users, MonitorPlay, MapPin } from "lucide-react";
-import { TrustBadge } from "@/components/brand/Badge";
-
 export type Modality = "presentiel" | "distanciel";
 
 export type TrainingFamilyName =
@@ -69,7 +67,6 @@ export function TrainingCard({ training }: { training: Training }) {
         <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
           {training.family}
         </span>
-        {training.cpf && <TrustBadge variant="cpf">CPF</TrustBadge>}
       </div>
       <h3 className="mt-3 font-display text-lg font-bold leading-snug text-foreground">
         {training.title}
