@@ -374,7 +374,6 @@ export function ContactForm({
             <option value="">— À définir —</option>
             <option value="OPCO">OPCO</option>
             <option value="Plan de développement des compétences">Plan de développement des compétences</option>
-            <option value="CPF">CPF</option>
             <option value="France Travail">France Travail</option>
             <option value="Fonds propres">Fonds propres</option>
             <option value="Autre / je ne sais pas">Autre / je ne sais pas</option>
