@@ -35,7 +35,7 @@ export function TrainingFamilies() {
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-secondary">Notre offre</p>
           <h2 id="families-title" className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
-            Trois familles de formations, un même fil rouge&nbsp;: l'efficacité chantier.
+            Quatre familles de formations, un même fil rouge&nbsp;: l'efficacité chantier.
           </h2>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
